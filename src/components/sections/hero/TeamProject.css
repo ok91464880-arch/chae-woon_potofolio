@@ -1,6 +1,6 @@
 ﻿.team-project {
   background: #111111;
-  color: #f7f0e8;
+  color: #ffffff;
   min-height: 100vh;
   padding: 220px 0 180px;
 }
@@ -46,6 +46,27 @@
   margin-bottom: 0;
 }
 
+.team-project.is-inview .team-project-line {
+  opacity: 0;
+  animation: slideInFromRight 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.team-project.is-inview .team-project-line:nth-child(1) {
+  transform: translateX(60px);
+  animation-delay: 0.1s;
+}
+
+.team-project.is-inview .team-project-line:nth-child(2) {
+  transform: translateX(-60px);
+  animation-name: slideInFromLeft;
+  animation-delay: 0.25s;
+}
+
+.team-project.is-inview .team-project-line:nth-child(3) {
+  transform: translateX(60px);
+  animation-delay: 0.4s;
+}
+
 .team-project-italic {
   font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
   font-style: italic;
@@ -57,13 +78,12 @@
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  border-radius: 6px;
   color: #ffffff;
   font-family: "PPMori-Semibold", sans-serif;
 }
 
 .team-project-block--cyan {
-  background: #bdebd4;
+  background: #8ED5DF;
   color: #ffffff;
 }
 
@@ -81,6 +101,7 @@
   width: 40px;
   height: 40px;
   object-fit: contain;
+  animation: teamProjectSpin 12s linear infinite;
 }
 
 .team-project-icon--ring {
@@ -93,10 +114,71 @@
   height: 40px;
 }
 
+@keyframes teamProjectSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .team-project-cta {
   margin-top: 48px;
   display: flex;
   justify-content: center;
+}
+
+.team-project.is-inview .team-project-cta {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.55s;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-project-line,
+  .team-project-cta,
+  .team-project.is-inview .team-project-line,
+  .team-project.is-inview .team-project-cta {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 

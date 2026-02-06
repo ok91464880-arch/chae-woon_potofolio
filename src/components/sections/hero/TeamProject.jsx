@@ -20,13 +20,17 @@ const TeamProject = () => {
     };
 
     const observer = new IntersectionObserver(
-      ([entry]) => updateTheme(entry.isIntersecting),
+      ([entry]) => {
+        updateTheme(entry.isIntersecting);
+        target.classList.toggle("is-inview", entry.isIntersecting);
+      },
       { threshold: 0.2 }
     );
 
     observer.observe(target);
     return () => {
       updateTheme(false);
+      target.classList.remove("is-inview");
       observer.disconnect();
     };
   }, []);

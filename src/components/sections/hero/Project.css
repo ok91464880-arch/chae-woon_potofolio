@@ -1,6 +1,6 @@
 ﻿.project {
   background: #0f0f0f;
-  color: #f7f0e8;
+  color: #ffffff;
   /* 패널이 4개이므로 충분한 스크롤 길이를 제공합니다 */
   min-height: 400vh;
   padding: 0;
@@ -55,7 +55,7 @@
 }
 
 .project-kicker {
-  font-size: 28px;
+  font-size: 30px;
   margin: 0 0 18px;
   letter-spacing: -0.01em;
   font-weight: 500;

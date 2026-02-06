@@ -71,7 +71,7 @@
 .skill-title {
     font-size: clamp(60px, 8vw, 110px);
     letter-spacing: 0.02em;
-    margin: 0 0 160px;
+    margin: 0 0 130px;
     line-height: 1;
 }
 
@@ -190,7 +190,7 @@
 }
 
 .float-5 {
-    top: 88%;
+    top: 84%;
     right: 18%;
     animation-delay: 1.5s;
 }
