@@ -1,0 +1,360 @@
+.hero {
+    width: 90%;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-top: var(--nav-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-header {
+    margin-top: 70px;
+    margin-bottom: 40px;
+    position: relative;
+    width: 100%;
+}
+
+.hero-title-mark {
+    position: absolute;
+    top: -2px;
+    left: 17%;
+    width: 64px;
+    height: auto;
+    animation: titleMarkOrbit 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes titleMarkOrbit {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(10px, -8px) rotate(4deg);
+    }
+
+    50% {
+        transform: translate(0px, -16px) rotate(0deg);
+    }
+
+    75% {
+        transform: translate(-10px, -8px) rotate(-4deg);
+    }
+
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+}
+.badge {
+    background: var(--accent-purple);
+    padding: 4px 12px;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    margin: 0 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: "PP Mori", "D-DIN", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 128px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+.hero-title-line {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.hero-title-line--italic {
+    font-family: "PP Editorial New", "Canela Trial", "canela", serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.hero-title-char {
+    display: inline-block;
+    transform: translateY(115%);
+    opacity: 0;
+    animation: heroTitleStaggerUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--char-index) * 0.014s);
+}
+
+@keyframes heroTitleStaggerUp {
+    0% {
+        transform: translateY(115%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hero-visual {
+    position: relative;
+    margin-top: 33px;
+    z-index: -1;
+    width: 100%;
+}
+
+.character-container {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.character-img {
+    width: 100%;
+    max-height: 95vh;
+    object-fit: contain;
+    animation: hairSway 3.2s ease-in-out infinite;
+    transform-origin: center top;
+}
+
+/* 머리카락 바람 애니메이션 */
+@keyframes hairSway {
+
+    0%,
+    100% {
+        transform: rotate(0deg) translateX(0px) translateY(0px);
+    }
+
+    25% {
+        transform: rotate(1.4deg) translateX(6px) translateY(-4px);
+    }
+
+    50% {
+        transform: rotate(-1.6deg) translateX(-7px) translateY(3px);
+    }
+
+    75% {
+        transform: rotate(1.1deg) translateX(5px) translateY(-2px);
+    }
+}
+
+.float-element {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    will-change: transform;
+}
+
+/* 각 별마다 다른 애니메이션 적용 */
+.star-1 {
+    top: 15%;
+    left: -6%;
+    animation: float1 6s ease-in-out infinite;
+}
+
+.star-2 {
+    bottom: 25%;
+    right: -5%;
+    animation: float2 5s ease-in-out infinite;
+}
+
+.star-3 {
+    bottom: 5%;
+    left: 5%;
+    transform: rotate(45deg);
+    animation: float3 7s ease-in-out infinite;
+}
+
+/* 둥둥 떠다니는 애니메이션 keyframes */
+@keyframes float1 {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(15deg);
+    }
+
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(20deg);
+    }
+
+    50% {
+        transform: translateY(-10px) translateX(-10px) rotate(10deg);
+    }
+
+    75% {
+        transform: translateY(-25px) translateX(5px) rotate(25deg);
+    }
+}
+
+@keyframes float2 {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(-10deg);
+    }
+
+    25% {
+        transform: translateY(-15px) translateX(-15px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-25px) translateX(10px) rotate(-15deg);
+    }
+
+    75% {
+        transform: translateY(-10px) translateX(-5px) rotate(-20deg);
+    }
+}
+
+@keyframes float3 {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(45deg);
+    }
+
+    25% {
+        transform: translateY(-18px) translateX(12px) rotate(50deg);
+    }
+
+    50% {
+        transform: translateY(-30px) translateX(-8px) rotate(40deg);
+    }
+
+    75% {
+        transform: translateY(-12px) translateX(8px) rotate(55deg);
+    }
+}
+
+.hero-footer {
+    width: 100%;
+    padding: 0 40px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-top: auto;
+}
+
+.aboutMe-pill {
+    height: var(--pillH);
+    border: 0;
+    cursor: pointer;
+
+    letter-spacing: 0.02em;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    background: #fff;
+    color: #000;
+    padding: 20px 50px;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "D-DIN", system-ui, sans-serif;
+}
+
+.aboutMe-arrow {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    width: var(--arrowS);
+    height: var(--arrowS);
+    border-radius: 999px;
+    border: 0;
+    cursor: pointer;
+
+    background: #cfd2ff;
+
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    transition:
+        left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        right 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.45s ease;
+}
+
+.aboutMe-arrow__img {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    transition: opacity 0.25s ease;
+}
+
+.aboutMe-arrow__img--hover {
+    opacity: 0;
+}
+
+.aboutMe-arrow__img--default {
+    opacity: 1;
+}
+
+/* ✅ HOVER: arrow는 왼쪽으로 “절대 위치 이동” */
+.aboutMe-actions:hover .aboutMe-arrow {
+    right: auto;
+    left: 0;
+    /* 기준점은 컨테이너 왼쪽 */
+    background: #bdebd4;
+}
+
+/* ✅ HOVER: pill은 오른쪽으로 밀어서 겹침 제거 */
+.aboutMe-actions:hover .aboutMe-pill {
+    transform: translateX(var(--move));
+}
+
+/* ✅ HOVER: 화살표 이미지 교체 */
+.aboutMe-actions:hover .aboutMe-arrow__img--default {
+    opacity: 0;
+}
+
+.aboutMe-actions:hover .aboutMe-arrow__img--hover {
+    opacity: 1;
+}
+
+.aboutMe-arrow img {
+    width: 70px;
+    height: 70px;
+}
+
+.hero-subtext {
+    position: absolute;
+    right: 5%;
+    top: 93%;
+    transform: translateY(-50%);
+    text-align: right;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
+    opacity: 0.6;
+}
+
+.hero-subtext p {
+    margin: 0;
+}
+
+/* aboutMe-actions 스타일 수정 */
+.aboutMe-actions {
+    margin-top: 50px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: auto;
+}

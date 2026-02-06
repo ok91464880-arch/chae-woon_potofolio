@@ -1,0 +1,48 @@
+:root {
+  /* Colors from image */
+  --bg-color: #fdf5e6;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent-purple: #e0e0ff;
+  --accent-blue: #4a90e2;
+  --accent-pink: #ff8fa3;
+  
+  /* Fonts */
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+
+  /* Layout */
+  --nav-height: 80px;
+  --max-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

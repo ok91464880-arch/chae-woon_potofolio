@@ -1,0 +1,222 @@
+﻿.skill {
+    /* 1. 기본 배경색 설정 (올라올 때 이 색으로 부드럽게 돌아옵니다) */
+    background-color: #fff4ea;
+    color: #111111;
+    padding: 180px 0 300px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+
+    /* 모든 수치 변화에 0.8초의 부드러운 전환 효과 부여 */
+    transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s ease;
+}
+
+/* 📍 팁: 그라데이션은 transition이 안 되므로 가상 요소로 처리합니다 */
+.skill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #fff4ea 0%, #f9ede1 70%, #f3e4d6 100%);
+    z-index: -1;
+    transition: opacity 0.8s ease-in-out;
+    opacity: 1;
+}
+
+/* 📍 JS에서 .is-dark 클래스가 붙었을 때 (내려갈 때) */
+.skill.is-dark {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.skill.is-dark::before {
+    opacity: 0;
+    /* 그라데이션을 투명하게 만들어 검은 배경색이 드러나게 함 */
+}
+
+/* 📍 글자색 전환 (올라올 때도 적용되도록 수정) */
+.skill.is-dark .skill-title-main,
+.skill.is-dark .skill-title-italic {
+    color: #ffffff;
+}
+
+.skill-title-main,
+.skill-title-italic {
+    transition: color 0.8s ease;
+}
+
+/* 📍 플로팅 아이콘 가시성 조절 */
+.skill.is-dark .skill-float {
+    filter: brightness(1.2);
+}
+
+.skill-inner {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skill-badge {
+    display: inline-block;
+    font-family: "D-DIN", system-ui, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #1a1a1a;
+    background: #e0e0ff;
+    padding: 4px 12px;
+    margin: 0 0 14px;
+    border-radius: 4px;
+}
+
+.skill-title {
+    font-size: clamp(60px, 8vw, 110px);
+    letter-spacing: 0.02em;
+    margin: 0 0 160px;
+    line-height: 1;
+}
+
+.skill-title-italic {
+    font-family: "PP Editorial New", serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.skill-title-main {
+    font-family: "PPMori-Semibold", sans-serif;
+    font-weight: 600;
+}
+
+
+.skill-marquee-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-marquee-track {
+    display: flex;
+    gap: 30px;
+    animation: scroll 40s linear infinite;
+    width: max-content;
+}
+
+.skill-marquee-container:hover .skill-marquee-track {
+    animation-play-state: paused;
+}
+
+
+.skill-card {
+    flex-shrink: 0;
+    width: 200px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.skill-card:hover {
+    transform: scale(1.1) translateY(-10px);
+}
+
+.skill-icon-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-icon-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.skill-name {
+    display: none;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 15px));
+    }
+}
+
+.skill-floating-icons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.skill-float {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    animation: floatUpDown 6s ease-in-out infinite;
+    opacity: 0.9;
+    color: inherit;
+    --float-scale: 1;
+}
+
+.float-1 {
+    top: 22%;
+    left: 12%;
+    animation-delay: 0s;
+}
+
+.float-2 {
+    top: 48%;
+    left: 32%;
+    animation-delay: 0.6s;
+}
+
+.float-3 {
+    top: 33%;
+    right: 12%;
+    animation-delay: 1.2s;
+}
+
+.float-4 {
+    top: 900px;
+    left: 18%;
+    animation-delay: 0.9s;
+}
+
+.float-5 {
+    top: 88%;
+    right: 18%;
+    animation-delay: 1.5s;
+}
+
+.float-6 {
+    top: 462px;
+    right: 36%;
+    animation-delay: 0.3s;
+}
+
+.float-4.float-4-active {
+    color: #111111;
+    --float-scale: 1.35;
+    transition: color 300ms ease, transform 300ms ease;
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0) rotate(-2deg) scale(var(--float-scale));
+    }
+
+    50% {
+        transform: translateY(-16px) rotate(2deg) scale(var(--float-scale));
+    }
+
+    100% {
+        transform: translateY(0) rotate(-2deg) scale(var(--float-scale));
+    }
+}

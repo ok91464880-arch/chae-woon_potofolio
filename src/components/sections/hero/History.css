@@ -1,0 +1,314 @@
+:root {
+    --history-gap: 300px;
+}
+
+
+/* 전체 래퍼: 스크롤 길이(가짜 높이)를 JS가 세팅 */
+.history-wrap {
+    position: relative;
+    background: #FFF4EA;
+}
+
+/* sticky 영역: 화면에 고정 */
+.history-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 배경 */
+.history-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.history-line {
+    position: absolute;
+    left: 0;
+    top: 170px;
+    width: 100%;
+    height: 220px;
+    color: #FF7782;
+}
+
+.history-line path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+}
+
+/* 장식들 */
+.history-deco {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* 카드 width가 340px이고 gap이 376px라 가정 */
+.deco-2 {
+    width: 70px;
+    height: 70px;
+    left: calc(340px + 188px);
+    top: 50%;
+}
+
+.deco-3 {
+    width: 70px;
+    height: 70px;
+    left: calc((340px + 376px) * 2 - 287px);
+    top: 28%;
+}
+
+.deco-4 {
+    width: 60px;
+    height: 60px;
+    left: calc((340px + 376px) * 3 - 389px);
+    top: 50%;
+}
+
+.deco-5 {
+    width: 70px;
+    height: 70px;
+    left: calc((340px + 376px) * 4 - 390px);
+    top: 24%;
+}
+
+.deco-6 {
+    left: calc((340px + 376px) * 5 - 480px);
+    top: 30%;
+}
+
+
+.history-deco.sun.left {
+    left: 56px;
+    top: 48px;
+}
+
+.history-deco.sun.right {
+    right: 56px;
+    top: 220px;
+}
+
+.history-deco.star.mid {
+    left: 36%;
+    top: 260px;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: #ff86b7;
+    transform: rotate(18deg);
+}
+
+/* 타이틀 */
+.history-titleRow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 2;
+    width: max-content;
+}
+
+.history-titleIcon {
+    display: block;
+    align-self: center;
+}
+
+.history-marquee {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 8px 56px;
+    z-index: 2;
+}
+
+.history-marqueeTrack {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    width: max-content;
+    --marquee-offset: 56px;
+    animation: historyMarquee 22s linear infinite;
+    will-change: transform;
+}
+
+.history-marqueeTrack:hover {
+    animation-play-state: paused;
+}
+
+.history-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: conic-gradient(from 0deg, #ff7a4a, #ffcf7a, #ff7a4a);
+}
+
+.history-title {
+    font-size: 154px;
+    letter-spacing: -0.005em;
+    line-height: 1.06;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.history-title-main {
+    font-family: "PPMori-Semibold", "PP Mori", "canela", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.history-title-accent {
+    font-family: "PP Editorial New", "Canela Trial", "canela", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@keyframes historyMarquee {
+    0% {
+        transform: translateX(var(--marquee-offset));
+    }
+
+    100% {
+        transform: translateX(calc(-50% + var(--marquee-offset)));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .history-marqueeTrack {
+        animation: none;
+    }
+}
+
+/* 카드 레일 */
+.history-rail {
+    position: relative;
+    z-index: 2;
+    margin-top: 60px;
+    height: calc(100vh - 290px);
+    /* 타이틀 공간 제외 */
+    display: flex;
+    align-items: center;
+}
+
+/* 트랙: 가로로 길게 */
+.history-track {
+    position: relative;
+    display: flex;
+    gap: 300px;
+    will-change: transform;
+    transition: transform 0.02s linear;
+    /* 너무 딱딱하면 0.08s 정도로 */
+    padding-left: 40px;
+    padding-right: 200px;
+    margin-bottom: 60px;
+}
+
+.history-card:nth-child(odd) {
+    margin-top: -40px;
+}
+
+.history-card:nth-child(even) {
+    margin-top: 40px;
+}
+
+
+/* 카드 */
+.history-card {
+    position: relative;
+    z-index: 2;
+    width: 340px;
+    flex: 0 0 auto;
+    padding: 24px 0;
+}
+
+.history-img {
+    width: 400px;
+    height: 400px;
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* img 연결 시 */
+.history-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.history-year {
+    margin: 16px 0 6px;
+    font-family: "PP Editorial New", "Canela Trial", "canela", serif;
+    font-size: 68px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    border-bottom: 1.5px solid #111111;
+    width: 90%;
+}
+
+.history-desc {
+    margin: 0;
+    font-family: "Pretendard", sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(0, 0, 0, 0.65);
+    max-width: 260px;
+}
+
+.history-hint {
+    position: absolute;
+    left: 56px;
+    bottom: 24px;
+    margin: 0;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.45);
+    z-index: 2;
+}
+
+/* 날짜 텍스트 스타일 */
+.history-sub-date {
+    font-family: "Pretendard-Medium", "Pretendard", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    margin: 8px 0;
+}
+
+
+
+/* 반응형 */
+@media (max-width: 900px) {
+
+    .history-line {
+        position: absolute;
+        top: 220px;
+        /* 필요하면 200~280px로 조정 */
+        left: 0;
+        width: 100%;
+        height: 220px;
+        z-index: 0;
+        color: #FF7782;
+    }
+
+    .history-track {
+        gap: 300px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .history-card {
+        width: 280px;
+    }
+
+    .history-year {
+        font-size: 38px;
+    }
+
+    .history-hint {
+        left: 20px;
+    }
+}

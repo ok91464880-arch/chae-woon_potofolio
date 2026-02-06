@@ -1,0 +1,324 @@
+.aboutMe {
+    height: 350vh;
+    isolation: isolate;
+
+    /* ✅ 화면 밖으로 나가도 가로 스크롤바 안 생기게 */
+    overflow-x: clip;
+
+    --lx: 0px;
+    --rx: 0px;
+    --lrot: -10deg;
+    --rrot: 10deg;
+    --content: 0;
+    margin-bottom: 650px;
+}
+
+.aboutMe-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.aboutMe-inner {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.aboutMe-header {
+    text-align: center;
+    margin-top: 180px;
+    margin-bottom: 114px;
+}
+
+.aboutMe-title {
+    font-size: 110px;
+    letter-spacing: 0.02em;
+    margin: 0;
+    line-height: 1;
+}
+
+.aboutMe-title-main {
+    font-family: "PPMori-Semibold", sans-serif;
+    font-weight: 600;
+}
+
+.aboutMe-title-accent {
+    font-family: "PP Editorial New", "Canela Trial", "canela", serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.aboutMe-stage {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+/* 이미지 레이어 */
+.aboutMe-media {
+    position: absolute;
+    top: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.aboutMe-photo {
+    --photo-w: clamp(260px, 34vw, 680px);
+    --photo-h: clamp(340px, 44vw, 860px);
+
+    position: absolute;
+    bottom: 0;
+    width: var(--photo-w);
+    height: var(--photo-h);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #eee;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+    will-change: transform;
+}
+
+.aboutMe-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 닫힘 기준: 중앙 */
+.aboutMe-photo.left {
+    left: calc(50% - (var(--photo-w) / 2));
+    transform: translate3d(var(--lx), 0, 0) rotate(var(--lrot));
+}
+
+.aboutMe-photo.right {
+    right: calc(50% - (var(--photo-w) / 2));
+    transform: translate3d(var(--rx), 0, 0) rotate(var(--rrot));
+}
+
+/* 패널 */
+.aboutMe-panel {
+    position: relative;
+    width: 100%;
+    height: 82%;
+    margin-inline: auto;
+    background: #FF8D79;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* 카드 */
+.aboutMe-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 44px 38px;
+
+    opacity: var(--content);
+    transform: translateY(calc(18px - (18px * var(--content))));
+    transition: opacity 180ms linear, transform 180ms linear;
+}
+
+.aboutMe-card-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.aboutMe-name-top {
+    font-family: "PPMori-Semibold", sans-serif;
+    font-size: 70px;
+    font-weight: 600;
+    line-height: 1.06;
+    color: #111;
+}
+
+.aboutMe-img {
+    position: absolute;
+    left: -64px;
+    top: 8px;
+}
+
+.aboutMe-img img {
+    width: 52px;
+    height: 52px;
+    display: block;
+    animation: aboutMeSpin 18s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes aboutMeSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.aboutMe-name-bottom {
+    font-family: "PP Editorial New", "Canela Trial", "canela", serif;
+    font-size: 60px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.06;
+    margin: 0 0 24px;
+    color: #111;
+}
+
+.aboutMe-role.subname {
+    font-size: 20px;
+    font-family: "Pretendard", sans-serif;
+    letter-spacing: -0.02em;
+    color: #111;
+    background: #fff;
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 4px;
+}
+
+.aboutMe-desc {
+    margin-bottom: 40px;
+    font-family: "Pretendard", sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.aboutMe-actions {
+    --pillH: 64px;
+    --arrowS: 56px;
+
+    /* pill 왼쪽 둥근 캡까지 포함해서 더 왼쪽으로 */
+    --cap: calc(var(--pillH) / -50);
+    --move: calc(var(--arrowS) + var(--cap));
+    /* +px로 미세조정 */
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+
+    /* ✅ 기본은 arrow가 오른쪽에 있으니 그만큼 오른쪽 공간 확보 */
+    padding-right: var(--arrowS);
+}
+
+.aboutMe-pill {
+    height: var(--pillH);
+    border: 0;
+    cursor: pointer;
+
+    letter-spacing: 0.02em;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    background: #fff;
+    color: #000;
+    padding: 20px 50px;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "D-DIN", system-ui, sans-serif;
+}
+
+.aboutMe-arrow {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    width: var(--arrowS);
+    height: var(--arrowS);
+    border-radius: 999px;
+    border: 0;
+    cursor: pointer;
+
+    background: #cfd2ff;
+
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+
+    transition:
+        left 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        right 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.45s ease;
+}
+
+.aboutMe-arrow__img {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    transition: opacity 0.25s ease;
+}
+
+.aboutMe-arrow__img--hover {
+    opacity: 0;
+}
+
+.aboutMe-arrow__img--default {
+    opacity: 1;
+}
+
+/* ✅ HOVER: arrow는 왼쪽으로 “절대 위치 이동” */
+.aboutMe-actions:hover .aboutMe-arrow {
+    right: auto;
+    left: 0;
+    /* 기준점은 컨테이너 왼쪽 */
+    background: #bdebd4;
+}
+
+/* ✅ HOVER: pill은 오른쪽으로 밀어서 겹침 제거 */
+.aboutMe-actions:hover .aboutMe-pill {
+    transform: translateX(var(--move));
+}
+
+/* ✅ HOVER: 화살표 이미지 교체 */
+.aboutMe-actions:hover .aboutMe-arrow__img--default {
+    opacity: 0;
+}
+
+.aboutMe-actions:hover .aboutMe-arrow__img--hover {
+    opacity: 1;
+}
+
+.aboutMe-arrow img {
+    width: 70px;
+    height: 70px;
+}
+
+.aboutMe-footnote {
+    text-align: center;
+    margin: 18px 0 0;
+    font-size: 12px;
+    opacity: 0.6;
+    font-family: "D-DIN", system-ui, sans-serif;
+}
+
+
+
+
+@media (max-width: 820px) {
+    .aboutMe {
+        height: 240vh;
+    }
+
+    .aboutMe-photo {
+        --photo-w: clamp(220px, 52vw, 420px);
+        --photo-h: clamp(300px, 70vw, 560px);
+    }
+}

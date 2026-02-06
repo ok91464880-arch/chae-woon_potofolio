@@ -1,0 +1,266 @@
+﻿.project {
+  background: #0f0f0f;
+  color: #f7f0e8;
+  /* 패널이 4개이므로 충분한 스크롤 길이를 제공합니다 */
+  min-height: 400vh;
+  padding: 0;
+  position: relative;
+}
+
+/* 📍 컨테이너 역할 */
+.project-container {
+  position: relative;
+  display: block;
+  padding: 0;
+}
+
+/* 📍 개별 패널을 sticky로 설정 */
+.project-panel {
+  position: sticky;
+  top: 0;
+  /* 화면 상단에 고정 */
+  height: 100vh;
+  /* 화면 꽉 차게 설정 */
+  width: min(1500px, 92%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 80px;
+  align-items: center;
+
+  /* 패널이 겹칠 때 뒤가 보이지 않도록 배경색 지정 */
+  background: #0f0f0f;
+}
+
+/* 두 번째 패널이 첫 번째 패널 위로 부드럽게 겹치도록 설정 */
+.project-panel--faceshop {
+  z-index: 2;
+  /* 선택사항: 약간의 그림자를 주어 층 분리감을 줄 수 있습니다 */
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-panel--roomie {
+  z-index: 3;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-panel--intarial {
+  z-index: 4;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-text {
+  text-align: left;
+}
+
+.project-kicker {
+  font-size: 28px;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.project-title {
+  margin: 0 0 24px;
+  font-size: 64px;
+  line-height: 1.05;
+}
+
+.project-title-italic {
+  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.project-desc {
+  font-family: "Pretendard", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(247, 240, 232, 0.85);
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+
+.project-meta {
+  margin-bottom: 24px;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid #ff8ea0;
+  color: #ff8ea0;
+  font-family: "D-DIN", system-ui, sans-serif;
+}
+
+.project-tag--dugout {
+  border-color: #ff7782;
+  color: #ff7782;
+}
+
+.project-tag--faceshop {
+  border-color: #8ed5df;
+  color: #8ed5df;
+}
+
+.project-tag--roomie {
+  border-color: #a0a0f6;
+  color: #a0a0f6;
+}
+
+.project-tag--intarial {
+  border-color: #8ed5df;
+  color: #8ed5df;
+}
+
+.project-metrics {
+  display: grid;
+  gap: 12px;
+  max-width: 380px;
+}
+
+.metric {
+  display: grid;
+  grid-template-columns: 60px 1fr 50px;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.metric-label {
+  color: #f7f0e8;
+}
+
+.metric-bar {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.metric-bar span {
+  display: block;
+  height: 100%;
+  background: #ff7782;
+  border-radius: 999px;
+}
+
+.project-metrics--faceshop .metric-bar span {
+  background: #8ed5df;
+}
+
+.project-metrics--roomie .metric-bar span {
+  background: #a0a0f6;
+}
+
+.project-metrics--intarial .metric-bar span {
+  background: #8ed5df;
+}
+
+.metric-value {
+  text-align: right;
+  color: #f7f0e8;
+}
+
+.project-image {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.project-image img {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 18px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+  display: block;
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.6));
+  opacity: 0;
+  transition: opacity 260ms ease;
+  border-radius: 18px;
+}
+
+.project-image-actions {
+  display: flex;
+  gap: 18px;
+}
+
+.project-image-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  font-family: "D-DIN", system-ui, sans-serif;
+  text-transform: uppercase;
+  background: transparent;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.project-image-btn:hover {
+  background: #ffffff;
+  color: #111111;
+}
+
+.project-image:hover .project-image-overlay {
+  opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  .project-panel {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .project-container {
+    position: static;
+    gap: 80px;
+  }
+
+  .project {
+    min-height: auto;
+    padding: 120px 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .project {
+    padding: 96px 0;
+  }
+
+  .project-kicker {
+    font-size: 22px;
+  }
+
+  .project-title {
+    font-size: 40px;
+  }
+
+  .project-desc {
+    font-size: 16px;
+  }
+
+  .metric {
+    grid-template-columns: 52px 1fr 44px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,97 @@
+.video-section {
+    height: 260vh;
+    margin-bottom: var(--section-space-lg);
+}
+
+/* sticky 씬 */
+.video-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hero / Navbar와 동일한 90% 컨테이너 */
+.video-inner {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-card {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+
+    transform-origin: center;
+    will-change: width, transform, border-radius;
+}
+
+.video-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* 비디오 위 텍스트 */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    pointer-events: none;
+
+    color: #fff;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border-radius: inherit;
+}
+
+.video-title {
+    font-family: "PP Mori", "D-DIN", system-ui, sans-serif;
+    line-height: 1;
+    margin-bottom: 21px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+.video-title-italic {
+    font-family: "PP Editorial New", "Canela Trial", "canela", serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+.video-sub {
+    font-family: "D-DIN", system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    opacity: 0.9;
+}

@@ -1,0 +1,123 @@
+﻿.team-project {
+  background: #111111;
+  color: #f7f0e8;
+  min-height: 100vh;
+  padding: 220px 0 180px;
+}
+
+.team-project-inner {
+  width: min(1400px, 92%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.team-project-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #cfd2ff;
+  color: #111111;
+  padding: 4px 12px;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  font-family: "D-DIN", system-ui, sans-serif;
+  margin-bottom: 24px;
+}
+
+.team-project-title {
+  margin: 0 auto 50px;
+  max-width: 1100px;
+  font-size: clamp(36px, 3.6vw, 64px);
+  line-height: 1.25;
+  text-transform: uppercase;
+  font-family: "PPMori-Semibold", sans-serif;
+}
+
+.team-project-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.team-project-line:last-child {
+  margin-bottom: 0;
+}
+
+.team-project-italic {
+  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.team-project-block {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: "PPMori-Semibold", sans-serif;
+}
+
+.team-project-block--cyan {
+  background: #bdebd4;
+  color: #ffffff;
+}
+
+.team-project-block--lavender {
+  background: #b9b7ff;
+  color: #ffffff;
+}
+
+.team-project-block--pink {
+  background: #ff8ea0;
+  color: #ffffff;
+}
+
+.team-project-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.team-project-icon--ring {
+  width: 44px;
+  height: 44px;
+}
+
+.team-project-icon--pink {
+  width: 40px;
+  height: 40px;
+}
+
+.team-project-cta {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+@media (max-width: 700px) {
+  .team-project {
+    padding: 96px 0 140px;
+  }
+
+  .team-project-line {
+    gap: 10px;
+  }
+
+  .team-project-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .team-project-icon--ring {
+    width: 34px;
+    height: 34px;
+  }
+
+}

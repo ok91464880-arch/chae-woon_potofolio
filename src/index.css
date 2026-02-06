@@ -1,0 +1,101 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import './styles/global.css';
+
+@font-face {
+    font-family: "D-DIN";
+    src: url("./assets/fonts/d-din/D-DIN.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "D-DIN";
+    src: url("./assets/fonts/d-din/D-DIN-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "D-DIN";
+    src: url("./assets/fonts/d-din/D-DIN-Italic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Canela Trial";
+    src: url("./assets/images/fonts/canela-text-trial/CanelaText-Regular-Trial.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Canela Trial";
+    src: url("./assets/images/fonts/canela-text-trial/CanelaText-Bold-Trial.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "canela";
+    src: url("./assets/fonts/canela-text-trial/CanelaText-Regular.otf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "canela";
+    src: url("./assets/fonts/canela-text-trial/CanelaText-Bold.otf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Canela Text";
+    src: url("./assets/fonts/canela-text-trial/CanelaText-Black.otf") format("opentype");
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Canela Text";
+    src: url("./assets/fonts/canela-text-trial/CanelaText-Black.otf") format("opentype");
+    font-weight: 1000;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PP Mori";
+    src: url("./assets/images/fonts/PPMori-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PP Mori";
+    src: url("./assets/images/fonts/PPMori-Semibold.otf") format("opentype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PP Editorial New";
+    src: url("./assets/images/fonts/PPEditorialNew-Italic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+body {
+    font-family: "D-DIN", system-ui, sans-serif;
+}
+
+:root {
+    --section-space-lg: clamp(120px, 18vh, 200px);
+    --section-space-md: clamp(80px, 12vh, 140px);
+    --section-space-sm: clamp(48px, 8vh, 80px);
+}

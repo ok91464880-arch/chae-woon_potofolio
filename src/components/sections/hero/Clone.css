@@ -1,0 +1,46 @@
+﻿.clone {
+  background: #111111;
+  color: #f7f0e8;
+  padding: 140px 0;
+}
+
+.clone-inner {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.clone-badge {
+  display: inline-block;
+  font-family: "D-DIN", system-ui, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  background: #cfd2ff;
+  color: #111111;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+.clone-title {
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.clone-title-italic {
+  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.clone-title-main {
+  font-family: "PPMori-Semibold", sans-serif;
+  font-weight: 600;
+}
+
+.clone-sub {
+  font-family: "Pretendard", sans-serif;
+  font-size: 18px;
+  opacity: 0.7;
+  margin: 0;
+}
