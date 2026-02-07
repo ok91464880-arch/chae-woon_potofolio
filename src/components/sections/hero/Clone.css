@@ -1,30 +1,46 @@
-﻿.clone {
+﻿/* 기본 섹션 스타일 */
+.clone {
   background: #111111;
-  color: #f7f0e8;
-  padding: 140px 0;
+  color: #ffffff;
+  padding: 200px 0;
+  overflow: hidden;
+  /* 이미지가 삐져나가지 않게 */
 }
 
 .clone-inner {
-  width: min(1200px, 90%);
+  width: min(1600px, 95%);
   margin: 0 auto;
+}
+
+.clone-header {
   text-align: center;
+  margin-bottom: 140px;
+  padding-bottom: 40px;
 }
 
 .clone-badge {
   display: inline-block;
   font-family: "D-DIN", system-ui, sans-serif;
-  font-size: 18px;
-  letter-spacing: 0.08em;
-  background: #cfd2ff;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   color: #111111;
+  background: #e0e0ff;
   padding: 4px 12px;
-  margin-bottom: 16px;
+  margin: 0 0 14px;
 }
 
 .clone-title {
-  font-size: clamp(48px, 6vw, 96px);
-  line-height: 1.1;
-  margin: 0 0 16px;
+  font-size: clamp(60px, 8vw, 110px);
+  letter-spacing: 0.02em;
+  margin: 0 0 40px;
+  line-height: 1;
+}
+
+.clone-title-main {
+  font-family: "PP Mori", "PPMori-Semibold", "D-DIN", system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .clone-title-italic {
@@ -33,14 +49,196 @@
   font-weight: 400;
 }
 
-.clone-title-main {
-  font-family: "PPMori-Semibold", sans-serif;
-  font-weight: 600;
-}
-
 .clone-sub {
   font-family: "Pretendard", sans-serif;
-  font-size: 18px;
-  opacity: 0.7;
+  font-size: 16px;
+  opacity: 0.75;
   margin: 0;
+}
+
+/* 리스트 스타일 */
+.clone-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.clone-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
+  box-shadow: none;
+}
+
+/* 호버 시 전체 배경색 변경 (선택 사항) */
+.clone-item:hover {
+  background-color: #ff7782;
+  color: #111111;
+  padding-left: 20px;
+}
+
+.clone-item:hover .clone-item-title {
+  color: #ffffff;
+}
+
+.clone-item:hover .clone-tag {
+  border-color: #111111;
+  color: #111111;
+  opacity: 1;
+}
+
+.clone-item-title {
+  font-family: "PP Mori", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  letter-spacing: -0.02em;
+  color: inherit;
+}
+
+.clone-item-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.clone-tag {
+  font-family: "D-DIN", sans-serif;
+  font-size: 13px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  opacity: 0.6;
+  color: inherit;
+}
+
+/* ⭐ 플로팅 이미지 스타일 (핵심) */
+.clone-floating-img {
+  position: absolute;
+  left: var(--hover-x, 60%);
+  top: var(--hover-y, 50%);
+  transform: translate(-50%, -50%) scale(0.8) rotate(-5deg);
+  /* 기본 상태: 작고 살짝 회전 */
+  width: 450px;
+  /* 이미지 크기 */
+  height: 280px;
+  pointer-events: none;
+  /* 마우스 이벤트 방해 금지 */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    left 0.18s ease-out,
+    top 0.18s ease-out,
+    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    visibility 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: left, top, transform;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.clone-floating-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clone-floating-label {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%) rotate(-6deg);
+  background: #D3D3FF;
+  color: #111111;
+  font-family: "PP Mori", "PPMori-Semibold", "D-DIN", system-ui, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30%;
+}
+
+.clone-floating-label__track {
+  display: flex;
+  gap: 32px;
+  white-space: nowrap;
+  animation: exploreMarquee 4.2s linear infinite;
+}
+
+.clone-floating-label__track span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@keyframes exploreMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 호버 시 이미지 등장 */
+.clone-item:hover .clone-floating-img {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  /* 커지면서 똑바로 서기 */
+}
+
+/* 화살표 버튼 */
+.clone-item-arrow {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.clone-item:hover .clone-item-arrow {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: rotate(45deg);
+}
+
+.clone-item-arrow img {
+  width: 24px;
+  transition: all 0.3s ease;
+}
+
+.clone-item:hover .clone-item-arrow img {
+  filter: invert(0);
+  /* 호버 시 화살표 흰색으로 */
+}
+
+/* 반응형 모바일 */
+@media (max-width: 768px) {
+  .clone-item-title {
+    font-size: 32px;
+  }
+
+  .clone-floating-img {
+    width: 300px;
+    height: 180px;
+  }
+
+  .clone-item-arrow {
+    width: 50px;
+    height: 50px;
+  }
 }

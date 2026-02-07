@@ -99,3 +99,18 @@ body {
     --section-space-md: clamp(80px, 12vh, 140px);
     --section-space-sm: clamp(48px, 8vh, 80px);
 }
+
+
+/* index.css 정리 */
+body {
+    font-family: "D-DIN", system-ui, sans-serif;
+    margin: 0;
+    /* 📍 배경색 전환의 핵심 */
+    background-color: #FFF6EE;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.theme-dark {
+    background-color: #111111 !important;
+    /* 우선순위 보장 */
+}

@@ -1,10 +1,13 @@
-﻿.project {
-  background: #0f0f0f;
-  color: #ffffff;
-  /* 패널이 4개이므로 충분한 스크롤 길이를 제공합니다 */
+﻿/* 📍 Project 섹션의 기본 설정 */
+.project {
+  /* 배경을 투명하게 해서 body의 색상 변화가 보이게 합니다 */
+  background: transparent;
+  color: #f7f0e8;
   min-height: 400vh;
   padding: 0;
   position: relative;
+  /* 글자색 전환을 위한 트랜지션 */
+  transition: color 0.8s ease;
 }
 
 /* 📍 컨테이너 역할 */
@@ -18,38 +21,69 @@
 .project-panel {
   position: sticky;
   top: 0;
-  /* 화면 상단에 고정 */
   height: 100vh;
-  /* 화면 꽉 차게 설정 */
   width: min(1500px, 92%);
   margin: 0 auto;
-
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.1fr 1.3fr;
   gap: 80px;
   align-items: center;
-
-  /* 패널이 겹칠 때 뒤가 보이지 않도록 배경색 지정 */
-  background: #0f0f0f;
+  background: transparent;
 }
 
-/* 두 번째 패널이 첫 번째 패널 위로 부드럽게 겹치도록 설정 */
+/* 📍 패널이 겹칠 때 뒷 패널을 가려주는 배경 (Full Width) */
+.project-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  /* 화면 전체 너비 */
+  height: 100%;
+  /* 패널 높이 전체 */
+
+  /* 👈 여기서 배경색을 다시 지정합니다! */
+  background-color: #111111;
+
+  z-index: -1;
+  /* 텍스트와 이미지보다 뒤로 보냄 */
+  pointer-events: none;
+}
+
+/* 📍 Project 섹션 내부의 텍스트 색상 강제 지정 */
+.project-panel .project-kicker,
+.project-panel .project-title,
+.project-panel .project-desc,
+.project-panel .metric-label,
+.project-panel .metric-value {
+  color: #ffffff;
+  /* 배경이 어두우니 글자는 밝게 */
+}
+
+.project-panel>* {
+  background: inherit;
+}
+
+/* 📍 패널별 Z-index 레이어링 (차례대로 위로 쌓임) */
+.project-panel--dugout {
+  z-index: 1;
+}
+
 .project-panel--faceshop {
   z-index: 2;
-  /* 선택사항: 약간의 그림자를 주어 층 분리감을 줄 수 있습니다 */
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .project-panel--roomie {
   z-index: 3;
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .project-panel--intarial {
   z-index: 4;
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* 📍 타이틀 애니메이션 관련 */
 .project-text {
   text-align: left;
 }
@@ -65,23 +99,50 @@
   margin: 0 0 24px;
   font-size: 64px;
   line-height: 1.05;
+  overflow: hidden;
 }
 
 .project-title-italic {
-  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
+  display: inline-block;
+  font-family: "PP Editorial New", serif;
   font-style: italic;
   font-weight: 400;
 }
 
+/* 📍 타이틀 한 글자씩 올라오는 효과 */
+.project-title-char {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+}
+
+.project-panel.is-inview .project-title-char {
+  animation: projectTitleStaggerUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--char-index) * 0.02s);
+}
+
+@keyframes projectTitleStaggerUp {
+  0% {
+    transform: translateY(115%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .project-desc {
   font-family: "Pretendard", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.7;
   color: rgba(247, 240, 232, 0.85);
-  margin: 0 0 32px;
+  margin: 0 0 50px;
   max-width: 520px;
 }
 
+/* 📍 Tags & Metrics 공통 */
 .project-meta {
   margin-bottom: 24px;
 }
@@ -100,6 +161,7 @@
   font-family: "D-DIN", system-ui, sans-serif;
 }
 
+/* 📍 개별 프로젝트 컬러 포인트 */
 .project-tag--dugout {
   border-color: #ff7782;
   color: #ff7782;
@@ -134,7 +196,8 @@
   font-size: 14px;
 }
 
-.metric-label {
+.metric-label,
+.metric-value {
   color: #f7f0e8;
 }
 
@@ -148,38 +211,53 @@
 .metric-bar span {
   display: block;
   height: 100%;
-  background: #ff7782;
   border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
-.project-metrics--faceshop .metric-bar span {
+/* 컬러 바 지정 */
+.project-panel--dugout .metric-bar span {
+  background: #ff7782;
+}
+
+.project-panel--faceshop .metric-bar span {
   background: #8ed5df;
 }
 
-.project-metrics--roomie .metric-bar span {
+.project-panel--roomie .metric-bar span {
   background: #a0a0f6;
 }
 
-.project-metrics--intarial .metric-bar span {
+.project-panel--intarial .metric-bar span {
   background: #8ed5df;
 }
 
-.metric-value {
-  text-align: right;
-  color: #f7f0e8;
+/* 📍 Metric 채워지는 애니메이션 */
+.project-panel.is-inview .metric-bar span {
+  animation: metric-fill 900ms ease forwards;
 }
 
+@keyframes metric-fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 📍 이미지 및 오버레이 버튼 */
 .project-image {
-  display: flex;
-  justify-content: center;
   position: relative;
+  width: min(720px, 100%);
+  margin: 0 auto;
 }
 
 .project-image img {
   width: 100%;
-  max-width: 720px;
   border-radius: 18px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
   display: block;
 }
 
@@ -200,20 +278,14 @@
 }
 
 .project-image-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 12px 28px;
   border-radius: 999px;
   border: 2px solid #ffffff;
   color: #ffffff;
   text-decoration: none;
   font-size: 14px;
-  letter-spacing: 0.08em;
-  font-family: "D-DIN", system-ui, sans-serif;
-  text-transform: uppercase;
-  background: transparent;
-  transition: background 200ms ease, color 200ms ease;
+  font-family: "D-DIN", sans-serif;
+  transition: all 0.2s ease;
 }
 
 .project-image-btn:hover {
@@ -225,42 +297,20 @@
   opacity: 1;
 }
 
+/* 📍 반응형 처리 */
 @media (max-width: 1200px) {
   .project-panel {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-
-  .project-container {
-    position: static;
-    gap: 80px;
+    height: auto;
+    padding: 100px 0;
   }
 
   .project {
     min-height: auto;
-    padding: 120px 0;
-  }
-}
-
-@media (max-width: 700px) {
-  .project {
-    padding: 96px 0;
   }
 
-  .project-kicker {
-    font-size: 22px;
-  }
-
-  .project-title {
-    font-size: 40px;
-  }
-
-  .project-desc {
-    font-size: 16px;
-  }
-
-  .metric {
-    grid-template-columns: 52px 1fr 44px;
-    font-size: 12px;
+  .project-panel::before {
+    width: 100%;
   }
 }

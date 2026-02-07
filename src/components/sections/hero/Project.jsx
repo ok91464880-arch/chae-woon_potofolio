@@ -3,6 +3,20 @@ import "./Project.css";
 
 const Project = () => {
   const sectionRef = useRef(null);
+  const dugoutRef = useRef(null);
+  const faceshopRef = useRef(null);
+  const roomieRef = useRef(null);
+  const intarialRef = useRef(null);
+  const renderProjectTitle = (text) =>
+    text.split("").map((char, index) => (
+      <span
+        className="project-title-char"
+        style={{ "--char-index": index }}
+        key={`${text}-${index}`}
+      >
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
 
   useEffect(() => {
     const target = sectionRef.current;
@@ -31,15 +45,32 @@ const Project = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const targets = [dugoutRef.current, faceshopRef.current, roomieRef.current, intarialRef.current].filter(Boolean);
+    if (targets.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-inview", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="project" id="project" ref={sectionRef}>
       <div className="project-container">
         {/* 1. 첫 번째 패널 */}
-        <div className="project-panel project-panel--dugout">
+        <div className="project-panel project-panel--dugout" ref={dugoutRef}>
           <div className="project-text">
             <p className="project-kicker">모바일 팬덤 앱 디자인</p>
             <h3 className="project-title">
-              <span className="project-title-italic">DUGOUT</span>
+              <span className="project-title-italic">{renderProjectTitle("DUGOUT")}</span>
             </h3>
             <p className="project-desc">
               야구 팬의 실제 행동 흐름을 분석해, 경기 전부터 경기 후까지
@@ -93,11 +124,11 @@ const Project = () => {
         </div>
 
         {/* 2. 두 번째 패널 */}
-        <div className="project-panel project-panel--faceshop">
+        <div className="project-panel project-panel--faceshop" ref={faceshopRef}>
           <div className="project-text">
             <p className="project-kicker">브랜드 웹 리뉴얼 디자인</p>
             <h3 className="project-title">
-              <span className="project-title-italic">THE FACE SHOP</span>
+              <span className="project-title-italic">{renderProjectTitle("THE FACE SHOP")}</span>
             </h3>
             <p className="project-desc">
               브랜드의 핵심 가치인 “자연스러운 아름다움”을 중심으로 콘텐츠
@@ -151,11 +182,11 @@ const Project = () => {
         </div>
 
         {/* 3. 세 번째 패널 */}
-        <div className="project-panel project-panel--roomie">
+        <div className="project-panel project-panel--roomie" ref={roomieRef}>
           <div className="project-text">
             <p className="project-kicker">인테리어 앱 UX/UI 디자인</p>
             <h3 className="project-title">
-              <span className="project-title-italic">ROOMIE</span>
+              <span className="project-title-italic">{renderProjectTitle("ROOMIE")}</span>
             </h3>
             <p className="project-desc">
               사용자의 취향과 니즈를 구조화해, 공간 추천과 탐색이 직관적으로
@@ -209,11 +240,11 @@ const Project = () => {
         </div>
 
         {/* 4. 네 번째 패널 */}
-        <div className="project-panel project-panel--intarial">
+        <div className="project-panel project-panel--intarial" ref={intarialRef}>
           <div className="project-text">
             <p className="project-kicker">INTERIOR &amp; FURNITURE</p>
             <h3 className="project-title">
-              <span className="project-title-italic">DESIGN PROJECT</span>
+              <span className="project-title-italic">{renderProjectTitle("DESIGN PROJECT")}</span>
             </h3>
             <p className="project-desc">
               실내 공간 설계부터 가구 디자인까지 전반을 경험하며, 공간의 구조와

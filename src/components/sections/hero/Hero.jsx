@@ -39,9 +39,8 @@ const Hero = () => {
                 <h1 className="hero-title" ref={titleRef}>
                     {titleLines.map((line, lineIndex) => (
                         <span
-                            className={`hero-title-line${
-                                lineIndex === 1 ? ' hero-title-line--italic' : ''
-                            }`}
+                            className={`hero-title-line${lineIndex === 1 ? ' hero-title-line--italic' : ''
+                                }`}
                             key={line}
                         >
                             {line.split('').map((char, charIndex) => (
