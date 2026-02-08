@@ -1,0 +1,223 @@
+﻿.faq {
+  background: #fff6ee;
+  color: #111111;
+  padding: 160px 0 180px;
+}
+
+.faq-inner {
+  width: min(1400px, 92%);
+  margin: 0 auto;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.faq-badge {
+  display: inline-block;
+  font-family: "D-DIN", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #111111;
+  background: #e0e0ff;
+  padding: 4px 12px;
+  margin: 0 0 30px;
+}
+
+.faq-title {
+  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
+  font-weight: 800;
+  font-size: clamp(72px, 12vw, 130px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.faq-title-line {
+  display: block;
+  white-space: nowrap;
+  padding-bottom: 0.12em;
+}
+
+.faq-title-char {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  animation: heroTitleStaggerUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--char-index) * 0.05s);
+}
+
+@keyframes heroTitleStaggerUp {
+  0% {
+    transform: translateY(115%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item-group {
+  display: grid;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.faq-list.is-visible .faq-item-group {
+  animation: faqItemRise 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(0.15s + (var(--item-index) * 0.03s));
+}
+
+@keyframes faqItemRise {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-item {
+  text-align: left;
+  border: 1px solid #111111;
+  background: transparent;
+  color: inherit;
+  /* 오른쪽 여백(78px)은 아이콘이 들어갈 공간입니다 */
+  padding: 0 78px 0 22px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 16px;
+  align-items: center;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  min-height: 74px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-item-question {
+  font-family: "Pretendard", sans-serif;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.faq-item-icon {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 1px solid #111111;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  position: absolute;
+  /* 기존 코드의 -74px는 바깥으로 나가버리므로 0으로 수정하여 버튼 내부에 위치시킴 */
+  right: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+}
+
+/* 호버 시 스타일 */
+.faq-item:hover {
+  background: #FF7782;
+  border-color: #111111;
+}
+
+.faq-item:hover .faq-item-icon {
+  background: #D3D3FF;
+  border-color: #111111;
+}
+
+/* [수정됨] 활성화 상태 (.active) 
+   React 코드에서 className={`faq-item ${isOpen ? "active" : ""}`} 인지 확인하세요.
+*/
+.faq-item.active .faq-item-icon {
+  background: #D3D3FF;
+  border-color: #111111;
+  transform: rotate(90deg);
+  /* 아이콘 회전 */
+}
+
+.faq-answer-row {
+  border: 1px solid #111111;
+  border-radius: 999px;
+  /* 닫혀있을 때의 모양 */
+  background: transparent;
+  color: inherit;
+  padding: 0 22px;
+
+  /* 닫힌 상태 (높이 0) */
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease,
+    padding 0.6s ease;
+  /* 패딩 애니메이션 추가 */
+  margin-top: -1px;
+  /* 위쪽 버튼과 테두리 겹치기 */
+  display: flex;
+  align-items: center;
+}
+
+/* [수정됨] 답변이 열렸을 때 (.active)
+   React 코드에서 답변 영역에도 active 클래스가 붙어야 합니다.
+*/
+.faq-answer-row.active {
+  min-height: 74px;
+  max-height: 500px;
+  /* 내용이 잘리지 않도록 넉넉하게 */
+  opacity: 1;
+  padding: 20px 22px;
+  /* 열렸을 때 내부 여백 */
+  background: #ffffff;
+  border-radius: 28px;
+  /* 열렸을 때 박스 모양 */
+}
+
+.faq-item-answer {
+  margin: 0;
+  font-family: "Pretendard", sans-serif;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .faq {
+    padding: 120px 0 140px;
+  }
+
+  .faq-item {
+    padding: 14px 18px;
+    padding-right: 60px;
+    /* 모바일에서 아이콘 공간 확보 */
+  }
+
+  .faq-item-question {
+    font-size: 14px;
+  }
+
+  .faq-item-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+  }
+}

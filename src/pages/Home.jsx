@@ -8,6 +8,10 @@ import Skill from "../components/sections/hero/Skill";
 import TeamProject from "../components/sections/hero/TeamProject";
 import Project from "../components/sections/hero/Project";
 import Clone from "../components/sections/hero/Clone";
+import Hobby from "../components/sections/hero/Hobby";
+import Faq from "../components/sections/hero/Faq";
+import Final from "../components/sections/hero/Final";
+import Contact from "../components/sections/hero/Contact";
 
 
 const Home = () => {
@@ -29,6 +33,10 @@ const Home = () => {
       <TeamProject />
       <Project />
       <Clone />
+      <Hobby />
+      <Faq />
+      <Final />
+      <Contact />
     </main>
   );
 };

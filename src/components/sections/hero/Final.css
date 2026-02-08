@@ -1,0 +1,206 @@
+.final {
+  background: #fff6ee;
+  color: #111111;
+  padding: 300px 0 220px;
+  position: relative;
+}
+
+.final::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 208px;
+  background: #ffffff;
+  z-index: 0;
+}
+
+.final-bg {
+  position: absolute;
+  inset: 0;
+  background: url("/img/final_bg.png") top center / cover no-repeat;
+  opacity: 0;
+  transform: translateY(40px) scale(1.03);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.final.is-visible .final-bg {
+  animation: finalFloatIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) both,
+    finalCloudPulse 0.95s cubic-bezier(0.16, 1, 0.3, 1) both,
+    finalCloudDrift 4.2s ease-in-out 1.2s infinite;
+  animation-delay: 0.35s, 0.35s, 1.3s;
+}
+
+.final.is-visible .final-inner {
+  animation: finalContentLift 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.7s;
+}
+
+.final-inner {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.final-title {
+  margin: 170px 0 0;
+  font-size: 120px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.final-title-line {
+  display: block;
+}
+
+.final-title-char {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+}
+
+.final.is-visible .final-title-char {
+  animation: heroTitleStaggerUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(0.9s + (var(--char-index) * 0.02s));
+}
+
+.final-title-strong {
+  font-family: "PP Mori", "D-DIN", system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.final-title-italic {
+  font-family: "PPEditorialNew-Italic", "PP Editorial New", "Canela Trial", "canela", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.final-vector {
+  position: absolute;
+  width: 60px;
+  height: auto;
+  animation: finalVectorSpin 8s linear infinite;
+  transform-origin: center;
+}
+
+.final-vector-1 {
+  left: 0%;
+  bottom: 3%;
+  animation-duration: 9s;
+}
+
+.final-vector-2 {
+  left: 48%;
+  top: 23%;
+  width: 52px;
+  animation-duration: 7s;
+}
+
+.final-vector-3 {
+  right: -6%;
+  bottom: -5%;
+  width: 70px;
+  animation-duration: 6.5s;
+}
+
+@media (max-width: 1100px) {
+  .final-title {
+    font-size: clamp(64px, 10vw, 110px);
+  }
+}
+
+@media (max-width: 900px) {
+  .final {
+    padding: 160px 0 180px;
+  }
+
+  .final-inner {
+    min-height: 420px;
+  }
+
+  .final-title {
+    margin-top: 50px;
+  }
+}
+
+@keyframes finalFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(70px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes finalCloudPulse {
+  0% {
+    filter: blur(6px);
+  }
+
+  60% {
+    filter: blur(0px);
+  }
+
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@keyframes finalContentLift {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes finalCloudDrift {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroTitleStaggerUp {
+  0% {
+    transform: translateY(115%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes finalVectorSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

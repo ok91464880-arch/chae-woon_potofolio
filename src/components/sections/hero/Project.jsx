@@ -35,7 +35,7 @@ const Project = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => updateTheme(entry.isIntersecting),
-      { threshold: 0.2 }
+      { threshold: 0, rootMargin: "0px 0px 40% 0px" }
     );
 
     observer.observe(target);
@@ -68,7 +68,9 @@ const Project = () => {
         {/* 1. 첫 번째 패널 */}
         <div className="project-panel project-panel--dugout" ref={dugoutRef}>
           <div className="project-text">
-            <p className="project-kicker">모바일 팬덤 앱 디자인</p>
+            <p className="project-kicker">
+              <span>모바일 팬덤 앱 디자인</span>
+            </p>
             <h3 className="project-title">
               <span className="project-title-italic">{renderProjectTitle("DUGOUT")}</span>
             </h3>
@@ -126,7 +128,9 @@ const Project = () => {
         {/* 2. 두 번째 패널 */}
         <div className="project-panel project-panel--faceshop" ref={faceshopRef}>
           <div className="project-text">
-            <p className="project-kicker">브랜드 웹 리뉴얼 디자인</p>
+            <p className="project-kicker">
+              <span>브랜드 웹 리뉴얼 디자인</span>
+            </p>
             <h3 className="project-title">
               <span className="project-title-italic">{renderProjectTitle("THE FACE SHOP")}</span>
             </h3>
@@ -184,7 +188,9 @@ const Project = () => {
         {/* 3. 세 번째 패널 */}
         <div className="project-panel project-panel--roomie" ref={roomieRef}>
           <div className="project-text">
-            <p className="project-kicker">인테리어 앱 UX/UI 디자인</p>
+            <p className="project-kicker">
+              <span>인테리어 앱 UX/UI 디자인</span>
+            </p>
             <h3 className="project-title">
               <span className="project-title-italic">{renderProjectTitle("ROOMIE")}</span>
             </h3>
@@ -242,7 +248,9 @@ const Project = () => {
         {/* 4. 네 번째 패널 */}
         <div className="project-panel project-panel--intarial" ref={intarialRef}>
           <div className="project-text">
-            <p className="project-kicker">INTERIOR &amp; FURNITURE</p>
+            <p className="project-kicker">
+              <span>INTERIOR &amp; FURNITURE</span>
+            </p>
             <h3 className="project-title">
               <span className="project-title-italic">{renderProjectTitle("DESIGN PROJECT")}</span>
             </h3>

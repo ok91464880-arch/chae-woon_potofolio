@@ -89,10 +89,22 @@
 }
 
 .project-kicker {
-  font-size: 30px;
+  font-size: 34px;
   margin: 0 0 18px;
   letter-spacing: -0.01em;
   font-weight: 500;
+  overflow: hidden;
+}
+
+.project-kicker span {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+}
+
+.project-panel.is-inview .project-kicker span {
+  animation: projectTitleStaggerUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.04s;
 }
 
 .project-title {
@@ -140,6 +152,25 @@
   color: rgba(247, 240, 232, 0.85);
   margin: 0 0 50px;
   max-width: 520px;
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.project-panel.is-inview .project-desc {
+  animation: projectDescStaggerUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.18s;
+}
+
+@keyframes projectDescStaggerUp {
+  0% {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* 📍 Tags & Metrics 공통 */

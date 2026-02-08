@@ -49,6 +49,30 @@
   font-weight: 400;
 }
 
+.clone-title-char {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  animation: none;
+}
+
+.clone.is-title-inview .clone-title-char {
+  animation: cloneTitleStaggerUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--char-index) * 0.014s);
+}
+
+@keyframes cloneTitleStaggerUp {
+  0% {
+    transform: translateY(115%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .clone-sub {
   font-family: "Pretendard", sans-serif;
   font-size: 16px;
@@ -72,13 +96,44 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, padding 0.3s ease;
   box-shadow: none;
+  --clone-hover-bg: #ff7782;
+}
+
+.clone-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* hover된 아이템 외 텍스트는 살짝 흐리게 */
+.clone-list:hover .clone-item {
+  opacity: 0.5;
+  transition: opacity 0.25s ease;
+}
+
+.clone-list:hover .clone-item:hover {
+  opacity: 1;
 }
 
 /* 호버 시 전체 배경색 변경 (선택 사항) */
 .clone-item:hover {
-  background-color: #ff7782;
+  background-color: var(--clone-hover-bg);
   color: #111111;
   padding-left: 20px;
+}
+
+.clone-item[data-accent="musign"] {
+  --clone-hover-bg: #A0A0F6;
+}
+
+.clone-item[data-accent="dopda"] {
+  --clone-hover-bg: #8ED5DF;
+}
+
+.clone-item[data-accent="ystudio"] {
+  --clone-hover-bg: #A0A0F6;
+}
+
+.clone-item[data-accent="cruella"] {
+  --clone-hover-bg: #8ED5DF;
 }
 
 .clone-item:hover .clone-item-title {
@@ -86,8 +141,8 @@
 }
 
 .clone-item:hover .clone-tag {
-  border-color: #111111;
-  color: #111111;
+  border-color: #ffffff;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -98,6 +153,67 @@
   margin: 0 0 15px 0;
   letter-spacing: -0.02em;
   color: inherit;
+  text-transform: uppercase;
+  line-height: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.clone-kca-icon {
+  width: 0;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.clone-kca-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.clone-item:hover .clone-kca-icon,
+.clone-item.is-arrow-hover .clone-kca-icon {
+  width: 36px;
+  margin-right: 6px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.clone-item:hover .clone-kca-icon img,
+.clone-item.is-arrow-hover .clone-kca-icon img {
+  animation: cloneVectorSpin 3.6s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes cloneVectorSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.clone-item-title-main {
+  font-family: "PP Mori", "PPMori-Semibold", "D-DIN", system-ui, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.clone-item-title-italic {
+  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .clone-item-tags {
@@ -202,29 +318,65 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: transparent;
-  display: flex;
+  border: 1px solid #111111;
+  background: #f7f0e8;
+  display: grid;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
 }
 
 .clone-item:hover .clone-item-arrow {
-  background: #ffffff;
+  background: var(--clone-hover-bg);
   border-color: #ffffff;
-  transform: rotate(45deg);
+  transform: translateX(-22px);
 }
 
-.clone-item-arrow img {
-  width: 24px;
-  transition: all 0.3s ease;
+.clone-item-arrow-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: block;
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
 }
 
-.clone-item:hover .clone-item-arrow img {
-  filter: invert(0);
-  /* 호버 시 화살표 흰색으로 */
+.clone-item-arrow-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 16px;
+  height: 2px;
+  background: #111111;
+  transform: translateY(-50%);
 }
+
+.clone-item-arrow-icon::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid #111111;
+  border-right: 2px solid #111111;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.clone-item:hover .clone-item-arrow-icon::before {
+  background: #ffffff;
+}
+
+.clone-item:hover .clone-item-arrow-icon::after {
+  border-top-color: #ffffff;
+  border-right-color: #ffffff;
+}
+
+.clone-item:hover .clone-item-arrow-icon {
+  transform: rotate(0deg);
+}
+
 
 /* 반응형 모바일 */
 @media (max-width: 768px) {
