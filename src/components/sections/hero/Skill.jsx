@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Skill.css";
 
 const skillList = [
@@ -17,8 +17,13 @@ const skillList = [
 
 const Skill = () => {
     const doubledList = [...skillList, ...skillList];
+    const sectionRef = useRef(null);
     const [teamProjectInView, setTeamProjectInView] = useState(false);
     const [isDark, setIsDark] = useState(false);
+    const [isInView, setIsInView] = useState(false);
+
+    const titleItalic = "SKILL";
+    const titleMain = "ABILITY";
 
     useEffect(() => {
         const target = document.getElementById("teamproject");
@@ -47,14 +52,58 @@ const Skill = () => {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        const target = sectionRef.current;
+        if (!target) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsInView(entry.isIntersecting);
+            },
+            { threshold: 0.35 }
+        );
+
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section className={`skill ${isDark ? "is-dark" : ""}`} id="skill">
+        <section
+            className={`skill ${isDark ? "is-dark" : ""} ${isInView ? "is-inview" : ""}`}
+            id="skill"
+            ref={sectionRef}
+        >
             {/* ... 기존 내부 구조 동일 ... */}
             <div className="skill-inner">
                 <span className="skill-badge">HOW I DO</span>
-                <h2 className="skill-title">
-                    <span className="skill-title-italic">SKILL</span>{" "}
-                    <span className="skill-title-main">ABILITY</span>
+                <h2 className="skill-title" aria-label="SKILL ABILITY">
+                    <span className="skill-title-line">
+                        {titleItalic.split("").map((char, index) => (
+                            <span
+                                className="skill-title-char skill-title-italic"
+                                style={{ "--char-index": index }}
+                                key={`skill-italic-${index}`}
+                            >
+                                {char === " " ? "\u00A0" : char}
+                            </span>
+                        ))}
+                        <span
+                            className="skill-title-char"
+                            style={{ "--char-index": titleItalic.length }}
+                            key="skill-space"
+                        >
+                            {"\u00A0"}
+                        </span>
+                        {titleMain.split("").map((char, index) => (
+                            <span
+                                className="skill-title-char skill-title-main"
+                                style={{ "--char-index": titleItalic.length + 1 + index }}
+                                key={`skill-main-${index}`}
+                            >
+                                {char === " " ? "\u00A0" : char}
+                            </span>
+                        ))}
+                    </span>
                 </h2>
             </div>
 

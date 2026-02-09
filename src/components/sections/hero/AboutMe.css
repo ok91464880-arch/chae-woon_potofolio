@@ -39,6 +39,12 @@
     line-height: 1;
 }
 
+.aboutMe-title-line {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .aboutMe-title-main {
     font-family: "PPMori-Semibold", sans-serif;
     font-weight: 600;
@@ -48,6 +54,14 @@
     font-family: "PP Editorial New", "Canela Trial", "canela", serif;
     font-style: italic;
     font-weight: 400;
+}
+
+.aboutMe-title-char {
+    display: inline-block;
+    transform: translateY(115%);
+    opacity: 0;
+    animation: heroTitleStaggerUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--char-index) * 0.03s);
 }
 
 .aboutMe-stage {
@@ -80,7 +94,7 @@
     border-radius: 18px;
     overflow: hidden;
     background: #eee;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+    box-shadow: none;
     will-change: transform;
 }
 
@@ -189,14 +203,15 @@
     background: #fff;
     display: inline-block;
     margin-bottom: 20px;
-    padding: 4px;
+    padding: 6px;
 }
 
 .aboutMe-desc {
     margin-bottom: 40px;
     font-family: "Pretendard", sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.5;
+    font-weight: 300;
     color: #fff;
 }
 

@@ -63,8 +63,9 @@
     letter-spacing: 0.05em;
     color: #1a1a1a;
     background: #e0e0ff;
-    padding: 4px 12px;
-    margin: 0 0 14px;
+    padding: 4px 24px;
+    margin: 0 0 20px;
+    border-radius: 999px;
 }
 
 .skill-title {
@@ -72,6 +73,23 @@
     letter-spacing: 0.02em;
     margin: 0 0 130px;
     line-height: 1;
+}
+
+.skill-title-line {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.skill-title-char {
+    display: inline-block;
+    transform: translateY(115%);
+    opacity: 0;
+}
+
+.skill.is-inview .skill-title-char {
+    animation: heroTitleStaggerUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--char-index) * 0.014s);
 }
 
 .skill-title-italic {

@@ -80,7 +80,7 @@ const VideoSection = () => {
                     >
                         <video
                             className="video"
-                            src="/video/hero_video.mp4"
+                            src="/video/hero_vedio.mp4"
                             autoPlay
                             muted
                             loop

@@ -5,8 +5,10 @@ import characterImg from '../../../assets/images/character.png';
 const Hero = () => {
     const titleLines = ['DESIGNING UX/UI', 'JOURNEYS THAT', 'MOVE USERS FORWARD'];
     const titleRef = useRef(null);
+    const actionsRef = useRef(null);
     const wasVisibleRef = useRef(false);
     const [titleAnimRun, setTitleAnimRun] = useState(0);
+    const [actionsInView, setActionsInView] = useState(false);
 
     useEffect(() => {
         const target = titleRef.current;
@@ -23,6 +25,23 @@ const Hero = () => {
                 }
 
                 wasVisibleRef.current = isVisible;
+            },
+            { threshold: 0.35 }
+        );
+
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        const target = actionsRef.current;
+        if (!target) {
+            return undefined;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setActionsInView(entry.isIntersecting);
             },
             { threshold: 0.35 }
         );
@@ -56,7 +75,10 @@ const Hero = () => {
                     ))}
                 </h1>
 
-                <div className="aboutMe-actions">
+                <div
+                    className={`aboutMe-actions hero-actions${actionsInView ? " is-inview" : ""}`}
+                    ref={actionsRef}
+                >
                     <button className="aboutMe-pill" type="button">
                         SCROLL
                     </button>

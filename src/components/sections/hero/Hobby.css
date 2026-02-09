@@ -14,18 +14,14 @@
   background: #fff6ee;
   z-index: -1;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 0%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 72%,
-    rgba(0, 0, 0, 0) 78%
-  );
-  mask-image: radial-gradient(
-    circle at 50% 0%,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 72%,
-    rgba(0, 0, 0, 0) 78%
-  );
+  -webkit-mask-image: radial-gradient(circle at 50% 0%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 72%,
+      rgba(0, 0, 0, 0) 78%);
+  mask-image: radial-gradient(circle at 50% 0%,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 72%,
+      rgba(0, 0, 0, 0) 78%);
   -webkit-mask-size: 0% 0%;
   mask-size: 0% 0%;
   -webkit-mask-repeat: no-repeat;
@@ -74,8 +70,9 @@
   letter-spacing: 0.05em;
   color: #111111;
   background: #e0e0ff;
-  padding: 4px 12px;
-  margin: 0 0 14px;
+  padding: 4px 24px;
+  margin: 0 0 24px;
+  border-radius: 999px;
 }
 
 .hobby-title {
@@ -121,7 +118,7 @@
 
   width: clamp(180px, 26vw, 320px);
   height: auto;
-  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.14));
+  filter: none;
   will-change: transform, opacity;
   /* 기존 transform 및 animation 제거 (JS가 담당) */
 }

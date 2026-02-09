@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Project.css";
 
 const Project = () => {
@@ -7,6 +7,14 @@ const Project = () => {
   const faceshopRef = useRef(null);
   const roomieRef = useRef(null);
   const intarialRef = useRef(null);
+  const dugoutGallery = ["/img/project_dugout.png", "/img/dugout_1.png", "/img/dugout_2.png"];
+  const [dugoutImage, setDugoutImage] = useState(dugoutGallery[0]);
+  const faceshopGallery = ["/img/project_thefaceshop.png", "/img/project_thefaceshop_2.png", "/img/project_thefaceshop_3.png"];
+  const [faceshopImage, setFaceshopImage] = useState(faceshopGallery[0]);
+  const roomieGallery = ["/img/project_roomie.png", "/img/project_roomie_2.png", "/img/project_roomie_3.png"];
+  const [roomieImage, setRoomieImage] = useState(roomieGallery[0]);
+  const intarialGallery = ["/img/project_intarial.png", "/img/project_intarial_2.png", "/img/project_intarial_3.png"];
+  const [intarialImage, setIntarialImage] = useState(intarialGallery[0]);
   const renderProjectTitle = (text) =>
     text.split("").map((char, index) => (
       <span
@@ -68,6 +76,9 @@ const Project = () => {
         {/* 1. 첫 번째 패널 */}
         <div className="project-panel project-panel--dugout" ref={dugoutRef}>
           <div className="project-text">
+            <div className="project-meta">
+              <span className="project-tag project-tag--dugout">TEAM PROJECT</span>
+            </div>
             <p className="project-kicker">
               <span>모바일 팬덤 앱 디자인</span>
             </p>
@@ -81,8 +92,18 @@ const Project = () => {
               다음 행동을 이끌었습니다.
             </p>
 
-            <div className="project-meta">
-              <span className="project-tag project-tag--dugout">TEAM PROJECT</span>
+            <div className="project-thumbs">
+              {dugoutGallery.map((src, index) => (
+                <button
+                  key={`dugout-thumb-${index}`}
+                  className={`project-thumb${dugoutImage === src ? " is-active" : ""}`}
+                  type="button"
+                  onClick={() => setDugoutImage(src)}
+                  aria-label={`DUGOUT thumbnail ${index + 1}`}
+                >
+                  <img src={src} alt="" />
+                </button>
+              ))}
             </div>
 
             <div className="project-metrics project-metrics--dugout">
@@ -111,7 +132,12 @@ const Project = () => {
           </div>
 
           <div className="project-image">
-            <img src="/img/project_dugout.png" alt="DUGOUT project" />
+            <img
+              key={dugoutImage}
+              src={dugoutImage}
+              alt="DUGOUT project"
+              className="project-image-media"
+            />
             <div className="project-image-overlay">
               <div className="project-image-actions">
                 <a className="project-image-btn" href="#" aria-label="View project">
@@ -128,6 +154,9 @@ const Project = () => {
         {/* 2. 두 번째 패널 */}
         <div className="project-panel project-panel--faceshop" ref={faceshopRef}>
           <div className="project-text">
+            <div className="project-meta">
+              <span className="project-tag project-tag--faceshop">TEAM PROJECT</span>
+            </div>
             <p className="project-kicker">
               <span>브랜드 웹 리뉴얼 디자인</span>
             </p>
@@ -141,8 +170,18 @@ const Project = () => {
               통해 브랜드 메시지가 자연스럽게 전달되도록 구성했습니다.
             </p>
 
-            <div className="project-meta">
-              <span className="project-tag project-tag--faceshop">TEAM PROJECT</span>
+            <div className="project-thumbs">
+              {faceshopGallery.map((src, index) => (
+                <button
+                  key={`faceshop-thumb-${index}`}
+                  className={`project-thumb${faceshopImage === src ? " is-active" : ""}`}
+                  type="button"
+                  onClick={() => setFaceshopImage(src)}
+                  aria-label={`THE FACE SHOP thumbnail ${index + 1}`}
+                >
+                  <img src={src} alt="" />
+                </button>
+              ))}
             </div>
 
             <div className="project-metrics project-metrics--faceshop">
@@ -171,7 +210,12 @@ const Project = () => {
           </div>
 
           <div className="project-image">
-            <img src="/img/project_thefaceshop.png" alt="The Face Shop project" />
+            <img
+              key={faceshopImage}
+              src={faceshopImage}
+              alt="The Face Shop project"
+              className="project-image-media"
+            />
             <div className="project-image-overlay">
               <div className="project-image-actions">
                 <a className="project-image-btn" href="#" aria-label="View project">
@@ -188,6 +232,9 @@ const Project = () => {
         {/* 3. 세 번째 패널 */}
         <div className="project-panel project-panel--roomie" ref={roomieRef}>
           <div className="project-text">
+            <div className="project-meta">
+              <span className="project-tag project-tag--roomie">PERSONAL PROJECT</span>
+            </div>
             <p className="project-kicker">
               <span>인테리어 앱 UX/UI 디자인</span>
             </p>
@@ -201,8 +248,18 @@ const Project = () => {
               있도록 UX를 구성했습니다.
             </p>
 
-            <div className="project-meta">
-              <span className="project-tag project-tag--roomie">PERSONAL PROJECT</span>
+            <div className="project-thumbs">
+              {roomieGallery.map((src, index) => (
+                <button
+                  key={`roomie-thumb-${index}`}
+                  className={`project-thumb${roomieImage === src ? " is-active" : ""}`}
+                  type="button"
+                  onClick={() => setRoomieImage(src)}
+                  aria-label={`ROOMIE thumbnail ${index + 1}`}
+                >
+                  <img src={src} alt="" />
+                </button>
+              ))}
             </div>
 
             <div className="project-metrics project-metrics--roomie">
@@ -231,7 +288,12 @@ const Project = () => {
           </div>
 
           <div className="project-image">
-            <img src="/img/project_roomie.png" alt="Roomie project" />
+            <img
+              key={roomieImage}
+              src={roomieImage}
+              alt="Roomie project"
+              className="project-image-media"
+            />
             <div className="project-image-overlay">
               <div className="project-image-actions">
                 <a className="project-image-btn" href="#" aria-label="View project">
@@ -248,6 +310,9 @@ const Project = () => {
         {/* 4. 네 번째 패널 */}
         <div className="project-panel project-panel--intarial" ref={intarialRef}>
           <div className="project-text">
+            <div className="project-meta">
+              <span className="project-tag project-tag--intarial">PERSONAL PROJECT</span>
+            </div>
             <p className="project-kicker">
               <span>INTERIOR &amp; FURNITURE</span>
             </p>
@@ -260,8 +325,18 @@ const Project = () => {
               균형 있게 조율해 완성도를 높였습니다.
             </p>
 
-            <div className="project-meta">
-              <span className="project-tag project-tag--intarial">PERSONAL PROJECT</span>
+            <div className="project-thumbs">
+              {intarialGallery.map((src, index) => (
+                <button
+                  key={`intarial-thumb-${index}`}
+                  className={`project-thumb${intarialImage === src ? " is-active" : ""}`}
+                  type="button"
+                  onClick={() => setIntarialImage(src)}
+                  aria-label={`DESIGN PROJECT thumbnail ${index + 1}`}
+                >
+                  <img src={src} alt="" />
+                </button>
+              ))}
             </div>
 
             <div className="project-metrics project-metrics--intarial">
@@ -283,7 +358,12 @@ const Project = () => {
           </div>
 
           <div className="project-image">
-            <img src="/img/project_intarial.png" alt="Interior project" />
+            <img
+              key={intarialImage}
+              src={intarialImage}
+              alt="Interior project"
+              className="project-image-media"
+            />
             <div className="project-image-overlay">
               <div className="project-image-actions">
                 <a className="project-image-btn" href="#" aria-label="View project">

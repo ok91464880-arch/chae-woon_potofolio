@@ -49,17 +49,19 @@
         transform: translate(0px, 0px) rotate(0deg);
     }
 }
+
 .badge {
     background: var(--accent-purple);
-    padding: 4px 12px;
+    padding: 4px 24px;
     font-size: 20px;
     font-weight: normal;
     letter-spacing: 0.05em;
-    margin: 0 0 14px;
+    margin: 0 0 20px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    border-radius: 999px;
 }
 
 .hero-title {
@@ -334,18 +336,32 @@
 
 .hero-subtext {
     position: absolute;
-    right: 5%;
+    right: 9%;
     top: 93%;
     transform: translateY(-50%);
     text-align: right;
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 400;
     line-height: 1.4;
     opacity: 0.6;
+    animation: heroSubtextSlideIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.4s;
 }
 
 .hero-subtext p {
     margin: 0;
+}
+
+@keyframes heroSubtextSlideIn {
+    0% {
+        opacity: 0;
+        transform: translate(24px, -50%);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: translate(0, -50%);
+    }
 }
 
 /* aboutMe-actions 스타일 수정 */
@@ -357,4 +373,26 @@
     justify-content: center;
     gap: 0;
     width: auto;
+}
+
+.hero-actions {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.hero-actions.is-inview {
+    animation: heroActionsSlideUp 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes heroActionsSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

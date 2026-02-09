@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./AboutMe.css";
 
 function clamp(n, min, max) {
@@ -19,6 +19,12 @@ const AboutMe = () => {
     const sectionRef = useRef(null);
     const leftRef = useRef(null);
     const rightRef = useRef(null);
+    const titleRef = useRef(null);
+    const wasTitleVisibleRef = useRef(false);
+    const [titleAnimRun, setTitleAnimRun] = useState(0);
+
+    const aboutTitle = "ABOUT";
+    const meTitle = "(ME)";
 
     useEffect(() => {
         const el = sectionRef.current;
@@ -102,15 +108,61 @@ const AboutMe = () => {
         };
     }, []);
 
+    useEffect(() => {
+        const target = titleRef.current;
+        if (!target) {
+            return undefined;
+        }
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                const isVisible = entry.isIntersecting;
+                if (isVisible && !wasTitleVisibleRef.current) {
+                    setTitleAnimRun((prev) => prev + 1);
+                }
+                wasTitleVisibleRef.current = isVisible;
+            },
+            { threshold: 0.35 }
+        );
+
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <section className="aboutMe" ref={sectionRef} id="about">
             <div className="aboutMe-sticky">
                 <div className="aboutMe-inner">
                     <div className="aboutMe-header">
                         <span className="badge">WHO AM I</span>
-                        <h2 className="aboutMe-title">
-                            <span className="aboutMe-title-main">ABOUT</span>{" "}
-                            <span className="aboutMe-title-accent">(ME)</span>
+                        <h2 className="aboutMe-title" ref={titleRef} aria-label="ABOUT (ME)">
+                            <span className="aboutMe-title-line">
+                                {aboutTitle.split("").map((char, index) => (
+                                    <span
+                                        className="aboutMe-title-char aboutMe-title-main"
+                                        style={{ "--char-index": index }}
+                                        key={`${titleAnimRun}-about-${index}`}
+                                    >
+                                        {char === " " ? "\u00A0" : char}
+                                    </span>
+                                ))}
+                                <span
+                                    className="aboutMe-title-char"
+                                    style={{ "--char-index": aboutTitle.length }}
+                                    key={`${titleAnimRun}-space`}
+                                >
+                                    {"\u00A0"}
+                                </span>
+                                {meTitle.split("").map((char, index) => (
+                                    <span
+                                        className="aboutMe-title-char aboutMe-title-accent"
+                                        style={{ "--char-index": aboutTitle.length + 1 + index }}
+                                        key={`${titleAnimRun}-me-${index}`}
+                                    >
+                                        {char === " " ? "\u00A0" : char}
+                                    </span>
+                                ))}
+                            </span>
                         </h2>
                     </div>
 

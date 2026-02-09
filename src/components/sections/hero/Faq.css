@@ -22,8 +22,9 @@
   letter-spacing: 0.05em;
   color: #111111;
   background: #e0e0ff;
-  padding: 4px 12px;
+  padding: 4px 24px;
   margin: 0 0 30px;
+  border-radius: 999px;
 }
 
 .faq-title {
@@ -96,8 +97,8 @@
   border: 1px solid #111111;
   background: transparent;
   color: inherit;
-  /* 오른쪽 여백(78px)은 아이콘이 들어갈 공간입니다 */
-  padding: 0 78px 0 22px;
+  /* 아이콘이 바깥으로 나가므로 내부 오른쪽 여백을 줄입니다 */
+  padding: 0 22px 0 22px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 10px 16px;
@@ -107,6 +108,7 @@
   cursor: pointer;
   min-height: 74px;
   transition: background-color 0.25s ease, border-color 0.25s ease;
+  overflow: visible;
 }
 
 .faq-item-question {
@@ -127,8 +129,8 @@
   place-items: center;
   font-size: 18px;
   position: absolute;
-  /* 기존 코드의 -74px는 바깥으로 나가버리므로 0으로 수정하여 버튼 내부에 위치시킴 */
-  right: 0;
+  /* 버튼 바깥으로 아이콘을 빼기 */
+  right: -90px;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
 }
 
