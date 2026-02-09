@@ -76,7 +76,7 @@ const TeamProject = () => {
         <div className="team-project-cta">
           <div className="aboutMe-actions">
             <button className="aboutMe-pill" type="button">
-              UXUI PROJECT
+              UXUI PROJEC
             </button>
             <button className="aboutMe-arrow" type="button" aria-label="Open">
               <img
