@@ -223,6 +223,13 @@
   border: 1px solid #ff8ea0;
   color: #ff8ea0;
   font-family: "D-DIN", system-ui, sans-serif;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.project-panel.is-inview .project-tag {
+  animation: projectTitleStaggerUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.02s;
 }
 
 /* 📍 개별 프로젝트 컬러 포인트 */
@@ -445,4 +452,78 @@
 
 .project-kicker {
   margin: 0 0 10px
+}
+
+@media (max-width: 900px) {
+  .project-title {
+    margin: 0px;
+    font-size: 46px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+  }
+
+  .project-tag {
+    font-size: 12px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .project-panel {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    height: auto;
+    padding: 80px 0 90px;
+    position: relative;
+  }
+
+  .project-text {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    width: min(560px, 90%);
+    margin: 0 auto 24px;
+  }
+
+  .project-meta {
+    margin-bottom: 12px;
+  }
+
+  .project-kicker {
+    margin-bottom: 14px;
+  }
+
+  .project-kicker {
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project-metrics {
+    display: none;
+  }
+
+  .project-thumbs {
+    display: none;
+  }
+
+  .project-title {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .project-image {
+    width: min(680px, 100%);
+    margin: 0 auto;
+  }
+
+  .project-image-actions {
+    justify-content: center;
+  }
 }

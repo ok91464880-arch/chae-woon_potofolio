@@ -273,8 +273,16 @@
 }
 
 @media (max-width: 900px) {
+  .hobby {
+    padding: 180px 0 20px;
+  }
+
   .hobby-hero {
     margin-bottom: 60px;
+  }
+
+  .hobby-title {
+    font-size: clamp(88px, 15vw, 200px);
   }
 
   .hobby-me {
@@ -284,5 +292,20 @@
     transform: none !important;
     /* 모바일에서 JS 위치 간섭 방지 */
     opacity: 1 !important;
+  }
+
+  .hobby-card {
+    top: -10%;
+    width: clamp(170px, 24vw, 300px);
+  }
+
+  .hobby-me {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hobby-title {
+    font-size: clamp(96px, 17vw, 230px);
   }
 }

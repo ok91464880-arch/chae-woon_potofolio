@@ -338,6 +338,13 @@
     }
 }
 
+@media (max-width: 800px) {
+    .aboutMe-photo {
+        --photo-w: clamp(165px, 40vw, 300px);
+        --photo-h: clamp(240px, 56vw, 420px);
+    }
+}
+
 @media (max-width: 1024px) {
     .aboutMe-header {
         margin-bottom: 36px;
@@ -357,5 +364,71 @@
 
     .aboutMe {
         margin-bottom: 540px;
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutMe-name-top {
+        font-size: 66px;
+    }
+
+    .aboutMe-name-bottom {
+        font-size: 54px;
+    }
+}
+
+@media (max-width: 800px) {
+    .aboutMe {
+        --lx: -24px;
+        --rx: 24px;
+        margin-bottom: 440px;
+    }
+
+    .aboutMe-name-top {
+        font-size: 62px;
+    }
+
+    .aboutMe-name-bottom {
+        font-size: 50px;
+    }
+
+    .aboutMe-role.subname {
+        font-size: 16px;
+    }
+
+    .aboutMe-media {
+        top: -23%;
+    }
+
+    .aboutMe-desc {
+        font-size: 14px;
+    }
+
+    .aboutMe-photo {
+        --photo-w: clamp(155px, 38vw, 280px);
+        --photo-h: clamp(230px, 54vw, 400px);
+    }
+
+    .aboutMe-img {
+        top: 0;
+    }
+
+    .aboutMe-pill {
+        padding: 16px 34px;
+    }
+
+    .aboutMe-card {
+        height: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutMe-panel {
+        height: 78%;
+    }
+
+    .aboutMe-photo {
+        --photo-w: clamp(145px, 36vw, 260px);
+        --photo-h: clamp(215px, 50vw, 380px);
     }
 }

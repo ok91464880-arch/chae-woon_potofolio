@@ -118,26 +118,42 @@ const Faq = () => {
         <div className={`faq-list ${listVisible ? "is-visible" : ""}`} ref={listRef}>
           {faqItems.map((item, index) => {
             const isOpen = index === openIndex;
+            const answerId = `faq-answer-${index}`;
             return (
               <div
                 key={item.question}
                 className="faq-item-group"
                 style={{ "--item-index": index }}
               >
-                <button
-                  // [수정 2] 깨진 문자 제거 및 동적 클래스 할당 (열렸을 때 'active' 클래스 추가 가정)
-                  className={`faq-item ${isOpen ? "active" : ""}`}
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  aria-expanded={isOpen}
-                >
-                  <span className="faq-item-question">{item.question}</span>
-                  <span className="faq-item-icon" aria-hidden="true">
-                    {isOpen ? "↘" : "↗"}
-                  </span>
-                </button>
+                <div className={`faq-item-row ${isOpen ? "active" : ""}`}>
+                  <button
+                    // [수정 2] 깨진 문자 제거 및 동적 클래스 할당 (열렸을 때 'active' 클래스 추가 가정)
+                    className={`faq-item ${isOpen ? "active" : ""}`}
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
+                  >
+                    <span className="faq-item-question">{item.question}</span>
+                  </button>
+                  <button
+                    className="faq-item-arrow"
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
+                    aria-label={isOpen ? "Close answer" : "Open answer"}
+                  >
+                    <span className="faq-item-icon" aria-hidden="true">
+                      {isOpen ? "↘" : "↗"}
+                    </span>
+                  </button>
+                </div>
                 {/* [수정 3] 깨진 문자 제거 */}
-                <div className={`faq-answer-row ${isOpen ? "active" : ""}`}>
+                <div
+                  id={answerId}
+                  className={`faq-answer-row ${isOpen ? "active" : ""}`}
+                >
                   {/* isOpen일 때만 내용이 보이도록 처리하거나 CSS로 높이를 조절해야 합니다. */}
                   {/* CSS transition을 쓰신다면 구조 유지가 맞고, 아니면 조건부 렌더링 {isOpen && ...}을 써야 합니다. */}
                   <p className="faq-item-answer">{item.answer}</p>

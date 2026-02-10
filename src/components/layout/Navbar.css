@@ -210,3 +210,17 @@
         min-width: 118px;
     }
 }
+
+@media (max-width: 900px) {
+    .nav-right {
+        min-width: 85px;
+    }
+}
+
+@media (max-width: 800px) {
+    .pill-menu {
+        padding: 8px 36px;
+        gap: 20px;
+        font-size: 14px;
+    }
+}

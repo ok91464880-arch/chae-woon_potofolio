@@ -109,3 +109,23 @@
 .scroll-right {
     animation: scrollRight 38s linear infinite;
 }
+
+@media (max-width: 900px) {
+    .marquee-row {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .keyword-section {
+        height: 100vh;
+    }
+
+    .marquee-row {
+        min-height: 200px;
+    }
+
+    .keyword-text {
+        font-size: 120px;
+    }
+}

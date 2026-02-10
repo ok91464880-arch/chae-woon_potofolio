@@ -484,3 +484,26 @@
         right: -1%;
     }
 }
+
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: clamp(56px, 9vw, 70px);
+    }
+}
+
+@media (max-width: 800px) {
+    .hero-title {
+        font-size: clamp(50px, 8.5vw, 64px);
+    }
+
+    .star-2 {
+        right: 1%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-subtext {
+        top: 89%;
+        font-size: 12px;
+    }
+}

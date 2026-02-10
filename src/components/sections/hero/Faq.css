@@ -92,16 +92,20 @@
   }
 }
 
+.faq-item-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
 .faq-item {
   text-align: left;
   border: 1px solid #111111;
   background: transparent;
   color: inherit;
-  /* 아이콘이 바깥으로 나가므로 내부 오른쪽 여백을 줄입니다 */
-  padding: 0 22px 0 22px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px 16px;
+  padding: 0 22px;
+  display: flex;
   align-items: center;
   border-radius: 999px;
   position: relative;
@@ -120,26 +124,31 @@
   height: 100%;
 }
 
-.faq-item-icon {
+.faq-item-arrow {
   width: 74px;
   height: 74px;
   border-radius: 50%;
   border: 1px solid #111111;
+  background: transparent;
+  color: inherit;
   display: grid;
   place-items: center;
   font-size: 18px;
-  position: absolute;
-  right: 12px;
+  cursor: pointer;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
 }
 
+.faq-item-icon {
+  display: inline-block;
+}
+
 /* 호버 시 스타일 */
-.faq-item:hover {
+.faq-item-row:hover .faq-item {
   background: #FF7782;
   border-color: #111111;
 }
 
-.faq-item:hover .faq-item-icon {
+.faq-item-row:hover .faq-item-arrow {
   background: #D3D3FF;
   border-color: #111111;
 }
@@ -147,7 +156,7 @@
 /* [수정됨] 활성화 상태 (.active) 
    React 코드에서 className={`faq-item ${isOpen ? "active" : ""}`} 인지 확인하세요.
 */
-.faq-item.active .faq-item-icon {
+.faq-item-row.active .faq-item-arrow {
   background: #D3D3FF;
   border-color: #111111;
   transform: rotate(90deg);
@@ -177,6 +186,8 @@
   /* 위쪽 버튼과 테두리 겹치기 */
   display: flex;
   align-items: center;
+  /* 질문 박스 폭에 맞춰 화살표 영역만큼 줄임 */
+  margin-right: calc(74px + 12px);
 }
 
 /* [수정됨] 답변이 열렸을 때 (.active)
@@ -208,15 +219,13 @@
 
   .faq-item {
     padding: 14px 18px;
-    padding-right: 60px;
-    /* 모바일에서 아이콘 공간 확보 */
   }
 
   .faq-item-question {
     font-size: 14px;
   }
 
-  .faq-item-icon {
+  .faq-item-arrow {
     width: 50px;
     height: 50px;
     font-size: 14px;
@@ -224,6 +233,22 @@
 
   .faq-answer-row.active {
     border-radius: 999px;
+  }
+
+  .faq-answer-row {
+    margin-right: calc(50px + 12px);
+  }
+}
+
+@media (max-width: 800px) {
+  .faq-item-answer {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-item {
+    min-height: 70px;
   }
 }
 
@@ -233,11 +258,6 @@
   }
 
   .faq-item {
-    padding-right: 96px;
-  }
-
-  .faq-item-icon {
-    right: -1px;
   }
 
   .faq-item-question {

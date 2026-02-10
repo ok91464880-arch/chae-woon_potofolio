@@ -73,8 +73,7 @@ const VideoSection = () => {
     const y = 20 * (1 - pSmooth);
 
     /* ===== 텍스트 스타일 값 ===== */
-    const titleFontSize = vw <= 1024 ? 76 : 110;
-    const subFontSize = 20;
+    const subFontSize = vw <= 1024 ? 16 : 20;
     const textIn = clamp((pSmooth - 0.3) / 0.4, 0, 1);
 
     return (
@@ -108,7 +107,6 @@ const VideoSection = () => {
                         >
                             <h2
                                 className="video-title"
-                                style={{ fontSize: `${titleFontSize}px` }}
                             >
                                 <span className="video-title-italic">Welcome!</span> to a journey
                                 <br />
@@ -119,7 +117,7 @@ const VideoSection = () => {
 
                             <p
                                 className="video-sub"
-                                style={{ fontSize: `${subFontSize}px` }}
+                                style={{ fontSize: `${subFontSize}px`, fontWeight: 300 }}
                             >
                                 This portfolio guides you through experiences shaped by clarity,
                                 <br />

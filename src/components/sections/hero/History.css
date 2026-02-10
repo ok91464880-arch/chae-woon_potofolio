@@ -313,4 +313,47 @@
     .history-hint {
         left: 20px;
     }
+
+    .history-marqueeTrack .history-title {
+        font-size: 120px;
+    }
+
+    .deco-2 {
+        top: 54%;
+        left: calc(340px + 168px);
+    }
+
+    .deco-3 {
+        left: calc((340px + 376px) * 2 - 337px);
+    }
+
+    .deco-4 {
+        left: calc((340px + 376px) * 3 - 479px);
+    }
+
+    .deco-5 {
+        left: calc((340px + 376px) * 4 - 620px);
+    }
+
+    .deco-6 {
+        left: calc((340px + 376px) * 5 - 800px);
+    }
+
+}
+
+@media (max-width: 800px) {
+    .history-marqueeTrack:hover .history-title {
+        font-size: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .history-img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .history-line {
+        top: 128px;
+    }
 }

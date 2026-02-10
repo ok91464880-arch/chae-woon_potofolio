@@ -3,6 +3,12 @@
     margin-bottom: var(--section-space-lg);
 }
 
+@media (max-width: 800px) {
+    .video-section {
+        margin-bottom: calc(var(--section-space-lg) - 100px);
+    }
+}
+
 /* sticky 씬 */
 .video-sticky {
     position: sticky;
@@ -79,6 +85,7 @@
     margin-bottom: 21px;
     font-weight: 600;
     letter-spacing: -0.025em;
+    font-size: 76px;
 }
 
 .video-title-italic {
@@ -103,5 +110,18 @@
 
     .video-sub {
         font-size: 16px;
+        font-weight: 300s;
+    }
+}
+
+@media (max-width: 800px) {
+    .video-title {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-title {
+        font-size: 58px;
     }
 }
