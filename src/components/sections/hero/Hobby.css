@@ -73,6 +73,24 @@
   padding: 4px 24px;
   margin: 0 0 24px;
   border-radius: 999px;
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.hobby.is-inview .hobby-badge {
+  animation: hobbyBadgeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hobbyBadgeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hobby-title {

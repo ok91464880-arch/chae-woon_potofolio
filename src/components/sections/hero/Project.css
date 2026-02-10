@@ -148,8 +148,8 @@
 .project-desc {
   font-family: "Pretendard", sans-serif;
   font-size: 16px;
-  line-height: 1.7;
-  font-weight: 300;
+  line-height: 1.5;
+  font-weight: 200;
   color: rgba(247, 240, 232, 0.85);
   margin: 0 0 70px;
   max-width: 520px;
@@ -393,4 +393,56 @@
   .project-panel::before {
     width: 100%;
   }
+}
+
+@media (max-width: 1024px) {
+  .project {
+    min-height: 400vh;
+  }
+
+  .project-panel {
+    grid-template-columns: 1fr 1.15fr;
+    gap: 56px;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .project-text {
+    max-width: 420px;
+  }
+
+  .project-kicker {
+    font-size: 20px;
+  }
+
+  .project-tag {
+    font-size: 14px;
+  }
+
+  .project-title {
+    font-size: 50px;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+
+  .project-thumbs {
+    gap: 10px;
+  }
+
+  .project-thumb {
+    width: 120px;
+    height: 68px;
+  }
+
+  .project-image {
+    width: min(620px, 100%);
+    justify-self: end;
+  }
+}
+
+.project-kicker {
+  margin: 0 0 10px
 }

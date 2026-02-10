@@ -337,3 +337,25 @@
         --photo-h: clamp(300px, 70vw, 560px);
     }
 }
+
+@media (max-width: 1024px) {
+    .aboutMe-header {
+        margin-bottom: 36px;
+    }
+
+    .aboutMe-title {
+        font-size: 90px;
+    }
+
+    .aboutMe-desc {
+        font-size: 16px;
+    }
+
+    .aboutMe-media {
+        top: -16%;
+    }
+
+    .aboutMe {
+        margin-bottom: 540px;
+    }
+}

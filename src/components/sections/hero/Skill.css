@@ -237,3 +237,9 @@
         transform: translateY(0) rotate(-2deg) scale(var(--float-scale));
     }
 }
+
+@media (max-width: 1024px) {
+    .skill-badge {
+        font-size: 16px;
+    }
+}

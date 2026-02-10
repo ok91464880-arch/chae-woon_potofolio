@@ -186,7 +186,15 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .team-project-badge {
+    font-size: 16px;
+  }
 
+  .team-project-title {
+    font-size: clamp(40px, 4.4vw, 70px);
+  }
+}
 
 @media (max-width: 700px) {
   .team-project {

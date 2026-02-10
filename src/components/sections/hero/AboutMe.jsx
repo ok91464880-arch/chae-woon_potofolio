@@ -54,11 +54,11 @@ const AboutMe = () => {
 
             // ✅ "처음엔 거의 닫힘 유지" + "끝까지 천천히"
             // 초반 멈춤 구간 조금 주고 싶으면 0.08~0.15 추천
-            const hold = 0.2;
+            const hold = 0.1;
             const t = clamp((p - hold) / (1 - hold), 0, 1);
 
             const eased = easeInOutCubic(t);
-            const easedSlow = Math.pow(eased, 2); // 더 천천히: 1.6~2.0
+            const easedSlow = Math.pow(eased, 1.6); // 더 천천히: 1.6~2.0
 
             const photoW = leftEl.getBoundingClientRect().width;
 
@@ -68,7 +68,7 @@ const AboutMe = () => {
             const maxSpread = (vw / 2) - (photoW / 2) - safeMargin + extraOut;
 
             // ✅ 여기 1.3 너무 과하면 1.1~1.2로
-            const spread = Math.max(0, maxSpread) * easedSlow * 1.2;
+            const spread = Math.max(0, maxSpread) * easedSlow * 1.15;
 
             const leftRot = -10 + 8 * easedSlow;  // -10 -> -2
             const rightRot = 10 - 8 * easedSlow;  //  10 ->  2

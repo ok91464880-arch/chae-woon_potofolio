@@ -68,8 +68,8 @@
 }
 
 .final.is-visible .final-title-char {
-  animation: heroTitleStaggerUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(0.9s + (var(--char-index) * 0.02s));
+  animation: heroTitleStaggerUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(0.6s + (var(--char-index) * 0.018s));
 }
 
 .final-title-strong {
@@ -114,6 +114,16 @@
 @media (max-width: 1100px) {
   .final-title {
     font-size: clamp(64px, 10vw, 110px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .final-title {
+    font-size: clamp(60px, 9vw, 100px);
+  }
+
+  .final-vector-3 {
+    right: 1%;
   }
 }
 

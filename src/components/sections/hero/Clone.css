@@ -396,3 +396,14 @@
     height: 50px;
   }
 }
+
+@media (max-width: 1024px) {
+  .clone-badge {
+    font-size: 16px;
+  }
+
+  .clone-title {
+    font-size: clamp(60px, 8vw, 110px);
+    margin-bottom: 46px;
+  }
+}

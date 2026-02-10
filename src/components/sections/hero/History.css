@@ -239,6 +239,7 @@
     object-fit: cover;
     display: block;
     opacity: 1;
+    filter: brightness(0.92);
 }
 
 .history-year {

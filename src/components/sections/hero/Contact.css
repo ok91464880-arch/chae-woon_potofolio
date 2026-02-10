@@ -61,7 +61,7 @@
 .contact-name {
   margin: 0;
   font-family: "PP Mori", "D-DIN", system-ui, sans-serif;
-  font-size: clamp(28px, 4.5vw, 46px);
+  font-size: 80px;
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -84,7 +84,7 @@
   display: flex;
   gap: 22px;
   align-items: center;
-  margin: 16px 0 36px;
+  margin: 16px 0 80px;
 }
 
 .contact-star {
@@ -162,8 +162,8 @@
 }
 
 .contact-info-value {
-  font-family: "PP Editorial New", "PPEditorialNew-Italic", "Canela Trial", "canela", serif;
-  font-size: clamp(18px, 2.6vw, 28px);
+  font-family: "PP Mori", "D-DIN", system-ui, sans-serif;
+  font-size: 36px;
   color: #ffffff;
 }
 
@@ -184,5 +184,23 @@
 
   .contact-info {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-title {
+    font-size: 140px;
+  }
+
+  .contact-tagline {
+    font-size: 10px;
+  }
+
+  .contact-info-value {
+    font-size: 30px;
+  }
+
+  .contact {
+    padding: 100px 0 120px;
   }
 }

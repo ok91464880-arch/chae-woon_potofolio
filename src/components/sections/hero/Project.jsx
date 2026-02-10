@@ -57,10 +57,21 @@ const Project = () => {
     const targets = [dugoutRef.current, faceshopRef.current, roomieRef.current, intarialRef.current].filter(Boolean);
     if (targets.length === 0) return;
 
+    const resetMap = new Map([
+      [dugoutRef.current, () => setDugoutImage(dugoutGallery[0])],
+      [faceshopRef.current, () => setFaceshopImage(faceshopGallery[0])],
+      [roomieRef.current, () => setRoomieImage(roomieGallery[0])],
+      [intarialRef.current, () => setIntarialImage(intarialGallery[0])],
+    ]);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           entry.target.classList.toggle("is-inview", entry.isIntersecting);
+          if (!entry.isIntersecting) {
+            const reset = resetMap.get(entry.target);
+            if (reset) reset();
+          }
         });
       },
       { threshold: 0.6 }
