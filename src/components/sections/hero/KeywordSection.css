@@ -11,7 +11,7 @@
 
 .keyword-container {
     width: 140%;
-    /* 📍 각도를 틀었을 때 여백이 생기지 않도록 너비를 더 키웠습니다. */
+    /* ?�� 각도�??�?�을 ???�백???�기지 ?�도�??�비�????�웠?�니?? */
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -27,25 +27,25 @@
     white-space: nowrap;
 }
 
-/* 📍 1번 줄: 오른쪽 위로 올라가는 각도 */
+/* ?�� 1�?�? ?�른�??�로 ?�라가??각도 */
 .row-sky {
     background-color: #B8E3E9;
     transform: rotate(-3deg);
     z-index: 3;
 }
 
-/* 📍 2번 줄: 왼쪽 위로 올라가는 각도 (이미지처럼 반대로 교차) */
+/* ?�� 2�?�? ?�쪽 ?�로 ?�라가??각도 (?��?지처럼 반�?�?교차) */
 .row-purple {
     background-color: #D3D3FF;
     transform: rotate(1deg);
     z-index: 2;
-    /* 2번 줄이 위아래 줄을 살짝 덮도록 */
+    /* 2�?줄이 ?�아??줄을 ?�짝 ??���?*/
     margin-top: -30px;
-    /* 📍 줄들이 서로 겹치게 하여 공간감을 줍니다. */
+    /* ?�� 줄들???�로 겹치�??�여 공간감을 줍니?? */
     margin-bottom: -30px;
 }
 
-/* 📍 3번 줄: 완만한 각도 */
+/* ?�� 3�?�? ?�만??각도 */
 .row-pink {
     background-color: #FF7782;
     transform: rotate(-2deg);
@@ -71,7 +71,7 @@
     white-space: nowrap;
 }
 
-/* 아이콘 스타일 */
+/* ?�이�??��???*/
 .icon-flower,
 .icon-star,
 .icon-circle {
@@ -81,7 +81,7 @@
     margin: 0 20px;
 }
 
-/* 애니메이션 로직은 그대로 유지 */
+/* ?�니메이??로직?� 그�?�??��? */
 @keyframes scrollLeft {
     from {
         transform: translateX(0);
@@ -127,5 +127,21 @@
 
     .keyword-text {
         font-size: 120px;
+    }
+}
+
+@media (max-width: 700px) {
+    .keyword-text {
+        font-size: 94px;
+    }
+}
+
+@media (max-width: 400px) {
+    .marquee-row {
+        min-height: 166px;
+    }
+
+    .keyword-text {
+        font-size: 74px;
     }
 }

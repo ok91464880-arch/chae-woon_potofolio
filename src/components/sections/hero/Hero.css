@@ -22,7 +22,7 @@
     position: absolute;
     top: -2px;
     left: 17%;
-    width: 64px;
+    width: 58px;
     height: auto;
     animation: titleMarkOrbit 6s ease-in-out infinite;
     transform-origin: center;
@@ -155,7 +155,7 @@
 
 .float-element {
     position: absolute;
-    width: 120px;
+    width: 106px;
     height: auto;
     will-change: transform;
 }
@@ -416,7 +416,7 @@
 
     .hero-title-mark {
         left: 10%;
-        width: 52px;
+        width: 48px;
         top: -6px;
     }
 
@@ -447,7 +447,7 @@
     }
 
     .float-element {
-        width: 88px;
+        width: 80px;
     }
 
     .hero-footer {
@@ -502,8 +502,38 @@
 }
 
 @media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(50px, 8.5vw, 62px);
+    }
+
     .hero-subtext {
         top: 89%;
         font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-header {
+        margin-top: 32px;
+    }
+
+    .hero-title-mark {
+        width: 42px;
+    }
+
+    .float-element {
+        width: 72px;
+    }
+
+    .badge {
+        margin-bottom: 14px;
+    }
+
+    .hero-title {
+        font-size: clamp(30px, 7.5vw, 59px);
+    }
+
+    .hero-subtext {
+        display: none;
     }
 }

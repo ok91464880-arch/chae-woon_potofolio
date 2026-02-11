@@ -105,6 +105,10 @@
     display: block;
 }
 
+.aboutMe-photo-mobile {
+    display: none;
+}
+
 /* 닫힘 기준: 중앙 */
 .aboutMe-photo.left {
     left: calc(50% - (var(--photo-w) / 2));
@@ -368,6 +372,14 @@
 }
 
 @media (max-width: 900px) {
+    .aboutMe-media {
+        top: -26%;
+    }
+
+    .aboutMe-panel {
+        height: 74%;
+    }
+
     .aboutMe-name-top {
         font-size: 66px;
     }
@@ -379,9 +391,13 @@
 
 @media (max-width: 800px) {
     .aboutMe {
-        --lx: -24px;
-        --rx: 24px;
+        --lx: -40px;
+        --rx: 40px;
         margin-bottom: 440px;
+    }
+
+    .aboutMe-panel {
+        height: 68%;
     }
 
     .aboutMe-name-top {
@@ -430,5 +446,212 @@
     .aboutMe-photo {
         --photo-w: clamp(145px, 36vw, 260px);
         --photo-h: clamp(215px, 50vw, 380px);
+    }
+}
+
+@media (max-width: 700px) {
+    .aboutMe-header {
+        margin-bottom: 0px;
+    }
+
+    .aboutMe-media {
+        top: -28%;
+    }
+
+    .aboutMe-stage {
+        position: relative;
+        height: 95vh;
+    }
+
+    .aboutMe-name-top {
+        font-size: 54px;
+    }
+
+    .aboutMe-name-bottom {
+        font-size: 46px;
+    }
+
+    .aboutMe-role.subname {
+        font-size: 14px;
+    }
+
+    .aboutMe-desc {
+        margin-top: 20px;
+    }
+
+    .aboutMe-actions {
+        margin-top: 8px;
+    }
+
+    .aboutMe-panel {
+        height: 70%;
+    }
+
+    .aboutMe-photo.right {
+        display: none;
+    }
+
+    .aboutMe-photo.left {
+        --photo-w: clamp(158px, 40vw, 276px);
+        --photo-h: clamp(226px, 55vw, 398px);
+        transform: translate3d(calc(var(--lx) * 0.75), 0, 0) rotate(0deg);
+    }
+
+    .aboutMe-card {
+        align-items: flex-end;
+        text-align: center;
+    }
+
+    .aboutMe-card-top {
+        justify-content: flex-end;
+    }
+
+    .aboutMe-actions {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 400px) {
+    .aboutMe-header {
+        margin-top: 22px;
+    }
+
+    .aboutMe-title {
+        font-size: 44px;
+    }
+
+    .aboutMe-name-top {
+        font-size: 50px;
+        margin-top: 14px;
+    }
+
+    .aboutMe-name-bottom {
+        font-size: 38px;
+        line-height: 1;
+        margin: 0 0 10px;
+    }
+
+    .aboutMe-pill {
+        font-size: 16px;
+        padding: 14px 24px;
+    }
+
+    .aboutMe-actions {
+        --pillH: 48px;
+        --arrowS: 48px;
+        margin-top: 10px;
+    }
+
+    .aboutMe-role.subname {
+        margin-bottom: 8px;
+    }
+
+    .aboutMe-media {
+        display: none;
+    }
+
+    .aboutMe-panel {
+        height: 89%;
+        overflow: hidden;
+    }
+
+    .aboutMe-photo-mobile {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 34px;
+        width: clamp(210px, 62vw, 280px);
+        height: clamp(290px, 80vw, 360px);
+        border-radius: 18px;
+        overflow: hidden;
+        transform: translateX(-50%) scale(0.9);
+        opacity: 0;
+        z-index: 2;
+        animation: none;
+    }
+
+    .aboutMe-photo-mobile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        animation: none;
+    }
+
+    .aboutMe-card {
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        padding-top: 349px;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: none;
+        animation: none;
+    }
+
+    .aboutMe.is-mobile-visible .aboutMe-photo-mobile {
+        animation: aboutMeMobilePhotoIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+    }
+
+    .aboutMe.is-mobile-visible .aboutMe-photo-mobile img {
+        animation: aboutMeMobilePhotoImgIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+    }
+
+    .aboutMe.is-mobile-visible .aboutMe-card {
+        animation: aboutMeMobileTextIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+    }
+
+    .aboutMe-card-top {
+        justify-content: center;
+    }
+
+    .aboutMe-actions {
+        align-self: center;
+    }
+
+    .aboutMe-desc {
+        font-size: 13px;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .aboutMe-img img {
+        display: none;
+    }
+}
+
+@keyframes aboutMeMobilePhotoIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(12px) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes aboutMeMobileTextIn {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aboutMeMobilePhotoImgIn {
+    0% {
+        transform: scale(1.08);
+        filter: blur(1px);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: blur(0);
     }
 }

@@ -22,6 +22,7 @@ const AboutMe = () => {
     const titleRef = useRef(null);
     const wasTitleVisibleRef = useRef(false);
     const [titleAnimRun, setTitleAnimRun] = useState(0);
+    const [isMobileVisible, setIsMobileVisible] = useState(false);
 
     const aboutTitle = "ABOUT";
     const meTitle = "(ME)";
@@ -129,8 +130,23 @@ const AboutMe = () => {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        const target = sectionRef.current;
+        if (!target) return undefined;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsMobileVisible(entry.isIntersecting);
+            },
+            { threshold: 0.2 }
+        );
+
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section className="aboutMe" ref={sectionRef} id="about">
+        <section className={`aboutMe ${isMobileVisible ? "is-mobile-visible" : ""}`} ref={sectionRef} id="about">
             <div className="aboutMe-sticky">
                 <div className="aboutMe-inner">
                     <div className="aboutMe-header">
@@ -177,6 +193,9 @@ const AboutMe = () => {
                         </div>
 
                         <div className="aboutMe-panel">
+                            <div className="aboutMe-photo-mobile" aria-hidden="true">
+                                <img src="/img/about_left.png" alt="" />
+                            </div>
                             <div className="aboutMe-card">
                                 <div className="aboutMe-card-top">
                                     <span className="aboutMe-img">

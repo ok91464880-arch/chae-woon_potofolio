@@ -309,3 +309,9 @@
     font-size: clamp(96px, 17vw, 230px);
   }
 }
+
+@media (max-width: 400px) {
+  .hobby-badge {
+    font-size: 18px;
+  }
+}

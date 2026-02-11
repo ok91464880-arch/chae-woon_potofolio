@@ -35,13 +35,18 @@ const History = () => {
         let raf = 0;
         let lineLen = 0;
 
-        const START_PADDING = 100;
-        const END_PADDING = 100;
+        const getHorizontalPadding = () => {
+            if (window.innerWidth <= 400) {
+                return { start: 20, end: 40 };
+            }
+            return { start: 100, end: 100 };
+        };
 
         const getMaxX = () => {
+            const { end } = getHorizontalPadding();
             const trackW = trackEl.scrollWidth;
             const viewW = pinEl.clientWidth;
-            return Math.max(0, trackW - viewW + END_PADDING);
+            return Math.max(0, trackW - viewW + end);
         };
 
         const measure = () => {
@@ -63,8 +68,9 @@ const History = () => {
             const progressed = clamp(-rect.top, 0, total);
             const maxX = getMaxX();
             const progress = progressed / total;
+            const { start } = getHorizontalPadding();
 
-            const nextX = (progress * maxX) - START_PADDING;
+            const nextX = (progress * maxX) - start;
             setX(nextX);
 
             if (lineEl && lineLen > 0) {

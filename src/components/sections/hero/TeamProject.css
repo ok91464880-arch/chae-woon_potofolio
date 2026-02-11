@@ -192,13 +192,17 @@
   }
 
   .team-project-title {
-    font-size: clamp(40px, 4.4vw, 70px);
+    font-size: clamp(38px, 4.4vw, 70px);
   }
 }
 
 @media (max-width: 700px) {
   .team-project {
     padding: 96px 0 140px;
+  }
+
+  .team-project-title {
+    font-size: clamp(38px, 4.4vw, 70px);
   }
 
   .team-project-line {
@@ -215,4 +219,16 @@
     height: 34px;
   }
 
+}
+
+@media (max-width: 400px) {
+  .team-project {
+    background: #111111;
+    color: #ffffff;
+    min-height: 76vh;
+  }
+
+  .team-project-title {
+    font-size: clamp(34px, 4.4vw, 70px);
+  }
 }

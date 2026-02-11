@@ -431,3 +431,22 @@
     font-weight: 200;
   }
 }
+
+@media (max-width: 400px) {
+  .clone-title {
+    font-size: clamp(44px, 8vw, 110px);
+  }
+
+  .clone-floating-img {
+    width: 220px;
+    height: 132px;
+  }
+
+  .clone-item-title {
+    font-size: 24px;
+  }
+
+  .clone-tag {
+    font-size: 12px;
+  }
+}

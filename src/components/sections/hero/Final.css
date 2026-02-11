@@ -141,6 +141,18 @@
   }
 }
 
+@media (max-width: 400px) {
+  .final-title {
+    font-size: clamp(36px, 9vw, 100px);
+  }
+}
+
+@media (max-width: 390px) {
+  .final-title {
+    font-size: clamp(35px, 9vw, 100px);
+  }
+}
+
 @keyframes finalFloatIn {
   0% {
     opacity: 0;

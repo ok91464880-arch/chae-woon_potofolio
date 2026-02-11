@@ -9,6 +9,7 @@ const lerp = (a, b, t) => a + (b - a) * t;
 
 const VideoSection = () => {
     const sectionRef = useRef(null);
+    const [videoError, setVideoError] = useState(false);
     const [progress, setProgress] = useState(0);
     const [pSmooth, setPSmooth] = useState(0);
     const [wSmooth, setWSmooth] = useState(0);
@@ -75,7 +76,6 @@ const VideoSection = () => {
     /* ===== 텍스트 스타일 값 ===== */
     const subFontSize = vw <= 1024 ? 16 : 20;
     const textIn = clamp((pSmooth - 0.3) / 0.4, 0, 1);
-
     return (
         <section className="video-section" ref={sectionRef}>
             <div className="video-sticky">
@@ -88,14 +88,23 @@ const VideoSection = () => {
                             borderRadius: `${radius}px`,
                         }}
                     >
-                        <video
-                            className="video"
-                            src="/video/hero_vedio.mp4"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                        />
+                        {!videoError ? (
+                            <video
+                                className="video"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                preload="auto"
+                                onError={() => setVideoError(true)}
+                            >
+                                <source src="/video/hero_vedio_h264.mp4" type="video/mp4" />
+                            </video>
+                        ) : (
+                            <div className="video video-fallback">
+                                This browser cannot play this video format.
+                            </div>
+                        )}
 
                         {/* ===== 텍스트 오버레이 ===== */}
                         <div
@@ -124,6 +133,7 @@ const VideoSection = () => {
                                 structure, and flow so every step feels natural.
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>

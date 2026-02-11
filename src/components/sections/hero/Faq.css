@@ -264,3 +264,27 @@
     font-size: 20px;
   }
 }
+
+@media (max-width: 700px) {
+  .faq-item-question {
+    font-size: 18px;
+  }
+
+  .faq-item-answer {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .faq-title {
+    font-size: clamp(48px, 8vw, 110px);
+  }
+
+  .faq-badge {
+    font-size: 18px;
+  }
+
+  .faq-item-question {
+    font-size: 16px;
+  }
+}
