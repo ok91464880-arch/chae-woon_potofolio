@@ -151,10 +151,22 @@ const Project = () => {
             />
             <div className="project-image-overlay">
               <div className="project-image-actions">
-                <a className="project-image-btn" href="#" aria-label="View project">
+                <a
+                  className="project-image-btn"
+                  href="https://www.figma.com/proto/PZ4DcB2o1rpPu4NV4Wv1DB/%EB%8D%95%EC%95%84%EC%9B%83-%EA%B8%B0%ED%9A%8D%EC%84%9C?page-id=0%3A1&node-id=1-376&viewport=674%2C334%2C0.14&t=FSHJbFcrDpcNhDEc-1&scaling=min-zoom&content-scaling=fixed"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View project"
+                >
                   VIEW PROJECT
                 </a>
-                <a className="project-image-btn" href="#" aria-label="View prototype">
+                <a
+                  className="project-image-btn"
+                  href="https://dugout-ruby.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View prototype"
+                >
                   VIEW PROTOTYPE
                 </a>
               </div>
@@ -229,10 +241,22 @@ const Project = () => {
             />
             <div className="project-image-overlay">
               <div className="project-image-actions">
-                <a className="project-image-btn" href="#" aria-label="View project">
+                <a
+                  className="project-image-btn"
+                  href="https://www.figma.com/proto/5kn9bkbhdFghVqdjzOeHEW/%EB%8D%94%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%83%B5-%EA%B8%B0%ED%9A%8D%EC%84%9C?page-id=0%3A1&node-id=1-8&viewport=435%2C260%2C0.45&t=2oVoAfcP7hxRiIZs-1&scaling=min-zoom&content-scaling=fixed"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View project"
+                >
                   VIEW PROJECT
                 </a>
-                <a className="project-image-btn" href="#" aria-label="View prototype">
+                <a
+                  className="project-image-btn"
+                  href="https://dkankfk-gif.github.io/team-Project/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View prototype"
+                >
                   VIEW PROTOTYPE
                 </a>
               </div>
@@ -307,10 +331,22 @@ const Project = () => {
             />
             <div className="project-image-overlay">
               <div className="project-image-actions">
-                <a className="project-image-btn" href="#" aria-label="View project">
+                <a
+                  className="project-image-btn"
+                  href="https://www.figma.com/proto/agr5obdHCuDNz7nE5fKwvp/%EB%A3%A8%EB%AF%B8-%EA%B8%B0%ED%9A%8D%EC%84%9C?page-id=0%3A1&node-id=1-246&viewport=667%2C361%2C0.17&t=lbjICdqXOz1ywdll-1&scaling=min-zoom&content-scaling=fixed"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View project"
+                >
                   VIEW PROJECT
                 </a>
-                <a className="project-image-btn" href="#" aria-label="View prototype">
+                <a
+                  className="project-image-btn"
+                  href="https://www.figma.com/proto/3xqZKNE1JrExiGghjAQLE4/%EB%A3%A8%EB%AF%B8-%ED%94%84%EB%A1%9C%ED%8A%B8%ED%83%80%EC%9E%85?page-id=0%3A1&node-id=1-4673&p=f&viewport=-326%2C-99%2C0.16&t=gdjkDaeuVVfad7bY-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4673"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View prototype"
+                >
                   VIEW PROTOTYPE
                 </a>
               </div>
