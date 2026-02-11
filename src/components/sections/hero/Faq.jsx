@@ -122,7 +122,7 @@ const Faq = () => {
             return (
               <div
                 key={item.question}
-                className="faq-item-group"
+                className={`faq-item-group ${isOpen ? "active" : ""}`}
                 style={{ "--item-index": index }}
               >
                 <div className={`faq-item-row ${isOpen ? "active" : ""}`}>
