@@ -412,7 +412,7 @@ const Project = () => {
               className="project-image-media"
             />
             <div className="project-image-overlay">
-              <div className="project-image-actions">
+              <div className="project-image-actions project-image-actions--single">
                 <a
                   className="project-image-btn"
                   href="/pdf/design-project.pdf"
@@ -421,9 +421,6 @@ const Project = () => {
                   aria-label="View project"
                 >
                   VIEW PROJECT
-                </a>
-                <a className="project-image-btn" href="#" aria-label="View prototype">
-                  VIEW PROTOTYPE
                 </a>
               </div>
             </div>

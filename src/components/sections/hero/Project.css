@@ -364,6 +364,10 @@
   gap: 18px;
 }
 
+.project-image-actions--single {
+  justify-content: center;
+}
+
 .project-image-btn {
   padding: 12px 28px;
   border-radius: 999px;
