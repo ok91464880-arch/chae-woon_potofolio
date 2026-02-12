@@ -413,7 +413,13 @@ const Project = () => {
             />
             <div className="project-image-overlay">
               <div className="project-image-actions">
-                <a className="project-image-btn" href="#" aria-label="View project">
+                <a
+                  className="project-image-btn"
+                  href="/pdf/design-project.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="View project"
+                >
                   VIEW PROJECT
                 </a>
                 <a className="project-image-btn" href="#" aria-label="View prototype">
