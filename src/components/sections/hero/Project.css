@@ -10,6 +10,16 @@
   transition: color 0.8s ease;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .project {
+    cursor: url("/img/project_img_hover.png") 16 16, auto;
+  }
+
+  .project * {
+    cursor: inherit;
+  }
+}
+
 /* 📍 컨테이너 역할 */
 .project-container {
   position: relative;
