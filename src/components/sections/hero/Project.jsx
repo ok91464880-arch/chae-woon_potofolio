@@ -252,7 +252,7 @@ const Project = () => {
                 </a>
                 <a
                   className="project-image-btn"
-                  href="https://dkankfk-gif.github.io/team-Project/"
+                  href="https://team-project-steel-five.vercel.app/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="View prototype"
